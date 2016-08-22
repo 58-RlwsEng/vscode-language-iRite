@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import * as builder from './build';
+//import * as builder from './build';
 import fs = require('fs');
 import path = require('path');
 import cp = require('child_process');
@@ -21,21 +21,35 @@ export function activate(context: vscode.ExtensionContext) {
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "iRite" is now active!');
 
-    var optionRev = <vscode.MessageItem>{
-                    title: "Get Revolution"
-                };
-    vscode.window.showInformationMessage('Revolution is required, would you like to download it?', optionRev).then(option => {
-                    if (typeof option == 'undefined') {
-                        return;
-                    }
-                    switch (option.title) {
-                        case optionRev.title:
-                            opener('https://www.ricelake.com/en-us/products/product-details/revolution-scale-software#/information');
-                            break;
-                        default:
-                            break;
-                    }
-                    });
+//check to see if the .exe is in specified path, if not display message to download revolution
+    let enginePath: string = vscode.workspace.getConfiguration('irite').get('build.enginePath', '');
+    var optionRev = <vscode.MessageItem>{title: "Get Revolution"};
+
+    fs.stat(enginePath, function(err, stat) {
+    if(err == null) {
+        console.log('Revolution exists');
+    } else if(err.code == 'ENOENT') {
+        // file does not exist
+        vscode.window.showInformationMessage('Revolution can not be located, would you like to download it?', optionRev).then(option => {
+            if (typeof option == 'undefined') {
+                 return;
+            }
+            switch (option.title) {
+                case optionRev.title:
+                     opener('https://www.ricelake.com/en-us/products/product-details/revolution-scale-software#/resources-downloads');
+                     break;
+                default:
+                    break;
+            }
+            });
+    } else {
+        console.log('Revolution Checker: ', err.code);
+    }
+    });
+    
+    
+    
+    
 
     iRiteChannel.show();
     
