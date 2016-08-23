@@ -20,6 +20,7 @@ Click on the Extension tab, and type in iRite. Click install and allow VScode to
 ### irite.settings.json
 
 Defaults are established on build, but must be modified for which indicator you are deploying to. 
+* method: TCP, RS232
 * indicator: 1280, 920, 880, 820
 * ipaddress: If using TCP connection
 * tcpport: If using TCP connection 
