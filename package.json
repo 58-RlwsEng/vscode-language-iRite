@@ -2,7 +2,7 @@
     "name": "irite",
     "displayName": "Language iRite",
     "description": "iRite support for Visual Studio Code",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "publisher": "bryanmullin",
     "galleryBanner": {
         "color": "#4682B4",
@@ -113,7 +113,7 @@
                 },
                 "irite.build.enginePath": {
                     "type": "string",
-                    "default": "C:\\Program Files (x86)\\Rice Lake Weighing Systems\\Revolution\\iRite Editor\\Compilers\\iRite_preprocessor.exe",
+                    "default": "C:\\Program Files (x86)\\Rice Lake Weighing Systems\\Revolution\\iRite Editor\\iRite_preprocessor.exe",
                     "description": "Indicates the build engine app path"
                 },
                 "irite.build.compilerPath": {
