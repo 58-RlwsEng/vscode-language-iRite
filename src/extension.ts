@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-//import * as builder from './build';
+//import * as builder from './build'; //removed until language server build starts
 import fs = require('fs');
 import path = require('path');
 import cp = require('child_process');
@@ -133,15 +133,14 @@ export function activate(context: vscode.ExtensionContext) {
                     }
                     switch (option.title) {
                         case optionRev.title:
-                            opener('https://www.ricelake.com/en-us/products/product-details/revolution-scale-software#/information');
+                            opener('https://www.ricelake.com/en-us/products/product-details/revolution-scale-software#/resources-downloads');
                             break;
                         case optionTest.title:
                             opener('http://www.ricelake.com');
                             break;
                         default:
                             break;
-                    }
-                    
+                    }                    
                     reject('hyperlink');
                 });
             } else {
