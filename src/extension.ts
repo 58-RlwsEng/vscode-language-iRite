@@ -21,7 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "iRite" is now active!');
 
-//check to see if the .exe is in specified path, if not display message to download revolution
+    //check to see if the .exe is in specified path, if not display message to download revolution
     let enginePath: string = vscode.workspace.getConfiguration('irite').get('build.enginePath', '');
     var optionRev = <vscode.MessageItem>{title: "Get Revolution"};
 
@@ -47,12 +47,10 @@ export function activate(context: vscode.ExtensionContext) {
     }
     });
     
-    
-    
-    
-
+    //shows iRite output on seperate debug output channel
     iRiteChannel.show();
     
+    //registercommands takes reference from package.json, alter that file for more/different commands
     vscode.commands.registerCommand('irite.build', () => {
     checkEngineDefined()
         .then((engineType) => {
@@ -84,6 +82,7 @@ export function activate(context: vscode.ExtensionContext) {
         });
     });
 
+    //registercommands takes reference from package.json, alter that file for more/different commands
     vscode.commands.registerCommand('irite.deploy', () => {
     checkEngineDefined()
         .then((engineType) => {
@@ -117,7 +116,6 @@ export function activate(context: vscode.ExtensionContext) {
     });
 
     function checkEngineDefined() {
-
         return new Promise((resolve, reject) => {
             let engineType: string = vscode.workspace.getConfiguration('irite').get('build.engine', '');
             if (engineType == '') {
@@ -153,9 +151,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
     function checkEnginePathDefined(engine: string) {
-
         return new Promise((resolve, reject) => {
-
             let enginePath: string = vscode.workspace.getConfiguration('irite').get('build.enginePath', '');
             if (enginePath == '') {
                 reject('The \"irite.build.enginePath\" setting is not defined. Please configure.');
