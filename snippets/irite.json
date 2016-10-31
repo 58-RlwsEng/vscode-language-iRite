@@ -92,7 +92,6 @@
   "description": "if end"
   },
   
-  
   "if else (no begin end)": {
   "prefix": "ife",
   "body": [
@@ -147,7 +146,7 @@
   "body": [
     "GetTare(${1:scaleNum}, ${2:Units}, ${3:TareOut});"
   ],
-  "description": "getTare"
+  "description": "GetTare"
   },
   "GetFilteredCount ": {
   "prefix": "GetFilteredCount",
@@ -163,6 +162,88 @@
   ],
   "description": "getRawCount"
   },
+  "SetImageWidgetPath ": {
+  "prefix": "SetImageWidgetPath",
+  "body": [
+      "SetImageWidgetPath(${1:Widget_int}, ${2:fileName_string});"
+  ],
+  "description": "SetImageWidgetPath"
+  },
+
+  "Debug": {
+     "prefix": "Debug",
+     "body": ["WriteLn(g_iDebug, \"${1:int_lineNumber 2:string_Message}\");"],
+     "description": "Debug"
+  },
+
+  "WriteLn": {
+
+  "prefix": "WriteLn",
+  "body": [
+   "WriteLn(${1:int_Port}, \"${2:string_message}\")"
+
+    ],
+  "description": "WriteLn" 
+  },
+
+  "While Loop": {
+    "prefix": "while",
+    "body": [
+    "while ${string_condition}",
+    "loop",
+    "\t$0",
+    "end loop;"
+  ],
+    "description": "While Loop"
+ },
+
+ "Left$": {
+    "prefix": "Left$",
+    "body": [
+    "Left$(${1:String_Name}; ${2:int_len})"
+    ],
+    "description": "Left$"
+ },
+
+  "SetLabelText": {
+     "prefix": "SetLabelText",
+    "body": [
+        "SetLabelText(${1:int_LabelID}, \"${2:string_Message}\");"
+    ],
+  "description": "SetLabelText"
+ },
+
+ "DisplayStatus": {
+
+    "prefix": "DisplayStatus",
+    "body": [
+      "DisplayStatus(\"${string_message}\");"
+    ],
+    "description": "DisplayStatus"
+ },
+
+ "For Loop": {
+    "prefix": "for loop",
+    "body": [
+      "for i := 1 to ${1:int_Count}",
+      "loop",
+      "\t$2",
+      "end loop;"
+    ],
+    "description": "For Loop"
+ },
+
+ "IfElse": {
+    "prefix": "if else",
+    "body": [
+      "if ${1:string_command} then",
+      "\t$2",
+      "else",
+      "\t$3",
+      "end if;"
+    ],
+    "description": "if else end if;"
+ },
 
 "GetCapacity ": {"prefix": "GetCapacity","body": ["GetCapacity(${1:scaleNum}, ${2:ScaleCapacity});"],"description": "getCapacity"},
 "GetMV ": {"prefix": "GetMV","body": ["GetMV(${1:scaleNum}, ${2:MV});"],"description": "GetMV"},
@@ -225,9 +306,9 @@
 "StopStreaming ": {"prefix": "StopStreaming","body": ["StopStreaming(${1:SPint});"],"description": "StopStreaming"},
 "Print ": {"prefix": "Print","body": ["Print(${1:PrintFormat});"],"description": "Print"},
 "SetPrintText ": {"prefix": "SetPrintText","body": ["SetPrintText(${1:fmt_num}, ${2:text_string});"],"description": "SetPrintText"},
-"GetDigIn ": {"prefix": "GetDigIn","body": ["GetDigIn(${1:scaleNum}, ${2:D_int}, ${3:V_int});"],"description": "GetDigIn"},
-"GetDigOut ": {"prefix": "GetDigOut","body": ["GetDigOut(${1:scaleNum}, ${2:D_int}, ${3:V_int});"],"description": "GetDigOut"},
-"SetDigOut ": {"prefix": "SetDigOut","body": ["SetDigOut(${1:scaleNum}, ${2:D_int}, ${3:V_int});"],"description": "SetDigOut"},
+"GetDigIn ": {"prefix": "GetDigIn","body": ["GetDigIn(${1:Slot_Int}, ${2:D_int}, ${3:V_int});"],"description": "GetDigIn"},
+"GetDigOut ": {"prefix": "GetDigOut","body": ["GetDigOut(${1:Slot_Int}, ${2:D_int}, ${3:V_int});"],"description": "GetDigOut"},
+"SetDigOut ": {"prefix": "SetDigOut","body": ["SetDigOut(${1:Slot_Int}, ${2:D_int}, ${3:V_int});"],"description": "SetDigOut"},
 "Abs ": {"prefix": "Abs","body": ["Abs(${1:X_real});"],"description": "Abs"},
 "Asc ": {"prefix": "Asc","body": ["Asc(${1:S_String});"],"description": "Asc"},
 "Atan ": {"prefix": "Atan","body": ["Atan(${1:X_real});"],"description": "Atan"},
