@@ -1,0 +1,1 @@
+{"TCP":{"deploy":"no","indicator":"1280","ipaddress":"10.10.10.10","tcpport":"10001"},"RS232":{"comport":"COM1","baudrate":"9600","databits":"8","parity":"NONE","stopbits":"ONE"}}

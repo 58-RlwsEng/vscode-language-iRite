@@ -6,7 +6,7 @@
     "\t$1",
     "end;"
   ],
-  "decription": "Begin end"
+  "description": "Begin end"
   },
 
   "block comment": {
@@ -20,7 +20,15 @@
   ],
   "description": "Block Comment"
   },
-  
+
+"PromptForEntry": {
+  "prefix": "PromptForEntry",
+  "body": [
+    "PromptForEntry(${1:string_Prompt}, ${2:integer_EntryMode}, ${3:string_Default}, ${4:bit_prompt});"
+  ],
+  "description": "PromptForEntry"
+},
+
 "handler": {
   "prefix": "handler",
   "body": [
@@ -31,7 +39,7 @@
   ],
   "description": "handler"
   },
-    
+
   "else end": {
   "prefix": "else",
   "body": [
@@ -41,7 +49,7 @@
   ],
   "description": "else end"
   },
-  
+
   "for loop": {
   "prefix": "for",
   "body": [
@@ -52,7 +60,7 @@
   ],
   "description": "for loop"
   },
-  
+
   "for (no begin end)": {
   "prefix": "forb",
   "body": [
@@ -61,7 +69,7 @@
   ],
   "description": "for (no begin end)"
   },
-  
+
   "function end": {
   "prefix": "function",
   "body": [
@@ -72,7 +80,7 @@
   ],
   "description": "function end"
   },
-  
+
   "if (no begin end)": {
   "prefix": "if",
   "body": [
@@ -81,7 +89,7 @@
   ],
   "description": "if (no begin end)"
   },
-  
+
   "if end if": {
   "prefix": "ifb",
   "body": [
@@ -91,7 +99,7 @@
   ],
   "description": "if end"
   },
-  
+
   "if else (no begin end)": {
   "prefix": "ife",
   "body": [
@@ -102,7 +110,7 @@
   ],
   "description": "if else (no begin end)"
   },
-  
+
   "if else end": {
   "prefix": "ifeb",
   "body": [
@@ -114,7 +122,7 @@
   ],
   "description": "if else end"
   },
-  
+
   "procedure": {
   "prefix": "procedure",
   "body": [
@@ -125,7 +133,15 @@
   ],
   "description": "procedure"
   },
-  
+
+  "FindFirst": {
+    "prefix": "FindFirst",
+    "body": [
+      ".FindFirst(${1:database}, ${2:field});"
+    ],
+    "description": "FindFirst"
+  },
+
   "GetGross ": {
   "prefix": "GetGross",
   "body": [
@@ -170,10 +186,16 @@
   "description": "SetImageWidgetPath"
   },
 
-  "Debug": {
+  "DebugSerial": {
      "prefix": "Debug",
      "body": ["WriteLn(g_iDebug, \"${1:int_lineNumber 2:string_Message}\");"],
-     "description": "Debug"
+     "description": "Debug Serial"
+  },
+
+  "DebugTCP": {
+     "prefix": "Debug",
+     "body": ["WriteOutLn(g_sDebug, \"${1:int_lineNumber 2:string_Message}\");"],
+     "description": "Debug TCP"
   },
 
   "WriteLn": {
@@ -183,7 +205,17 @@
    "WriteLn(${1:int_Port}, \"${2:string_message}\")"
 
     ],
-  "description": "WriteLn" 
+  "description": "WriteLn"
+  },
+
+  "WriteOutLn": {
+
+  "prefix": "WriteOutLn",
+  "body": [
+   "WriteLn(TCPC${1:int_Port}, \"${2:string_message}\")"
+
+    ],
+  "description": "WriteOutLn"
   },
 
   "While Loop": {
@@ -213,13 +245,12 @@
   "description": "SetLabelText"
  },
 
- "DisplayStatus": {
-
-    "prefix": "DisplayStatus",
-    "body": [
-      "DisplayStatus(\"${string_message}\");"
+ "SetWidgetColor": {
+   "prefix": "SetWidgetColor",
+   "body": [
+      "SetWidgetColor(${1:int_WidgetID}, \"${2:string_Color}\");"
     ],
-    "description": "DisplayStatus"
+  "description": "SetLabelText"
  },
 
  "For Loop": {
