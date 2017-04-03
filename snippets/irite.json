@@ -196,6 +196,7 @@
      "prefix": "Debug",
      "body": ["WriteOutLn(g_sDebug, \"${1:int_lineNumber 2:string_Message}\");"],
      "description": "Debug TCP"
+
   },
 
   "WriteLn": {
@@ -205,6 +206,7 @@
    "WriteLn(${1:int_Port}, \"${2:string_message}\")"
 
     ],
+
   "description": "WriteLn"
   },
 
@@ -216,6 +218,7 @@
 
     ],
   "description": "WriteOutLn"
+
   },
 
   "While Loop": {
@@ -251,6 +254,7 @@
       "SetWidgetColor(${1:int_WidgetID}, \"${2:string_Color}\");"
     ],
   "description": "SetLabelText"
+
  },
 
  "For Loop": {
