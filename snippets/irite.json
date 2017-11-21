@@ -21,6 +21,16 @@
   "description": "Block Comment"
   },
 
+  "IsValid": {
+  "prefix": "IsValid",
+  "body": [
+    "if isValid(${1:string_Number}, ${2:string_Type}, ${3:int_Length}) = true then",
+    "\t$4",
+    "end if;"
+  ],
+  "description": "IsValid"
+  },
+
 "PromptForEntry": {
   "prefix": "PromptForEntry",
   "body": [
@@ -59,15 +69,6 @@
     "end loop;"
   ],
   "description": "for loop"
-  },
-
-  "for (no begin end)": {
-  "prefix": "forb",
-  "body": [
-    "for ${1:i} := ${2:0} to ${3:max} do",
-    "\t$0"
-  ],
-  "description": "for (no begin end)"
   },
 
   "function end": {
@@ -137,7 +138,7 @@
   "FindFirst": {
     "prefix": "FindFirst",
     "body": [
-      ".FindFirst(${1:database}, ${2:field});"
+      "FindFirst(${1:database}_${2:field})"
     ],
     "description": "FindFirst"
   },
@@ -211,14 +212,12 @@
   },
 
   "WriteOutLn": {
-
   "prefix": "WriteOutLn",
   "body": [
-   "WriteLn(TCPC${1:int_Port}, \"${2:string_message}\")"
+   "WriteOutLn(TCPC${1:int_Port}, \"${2:string_message}\");"
 
     ],
   "description": "WriteOutLn"
-
   },
 
   "While Loop": {
@@ -257,6 +256,23 @@
 
  },
 
+ "SetBGColor": {
+   "prefix": "SetBGColor",
+   "body": [
+      "SetBGColor(${1:color_BG}, \"${2:color_Text}\");"
+    ],
+  "description": "SetLabelText"
+
+ },
+
+ "SetWidgetVisibility": {
+   "prefix": "SetWidgetVisibility",
+   "body": [
+     "SetWidgetVisibility(${1:int_WidgetID}, ${2:VonVoff};"
+   ],
+   "description": "SetWidgetVisibility"
+ },
+
  "For Loop": {
     "prefix": "for loop",
     "body": [
@@ -278,6 +294,14 @@
       "end if;"
     ],
     "description": "if else end if;"
+ },
+
+ "Separator Line": {
+   "prefix": "Dashed Line",
+   "body": [
+      "-------------------------------------------------------------------------------------"
+   ],
+   "description": "Dashes"
  },
 
 "GetCapacity ": {"prefix": "GetCapacity","body": ["GetCapacity(${1:scaleNum}, ${2:ScaleCapacity});"],"description": "getCapacity"},
@@ -341,6 +365,7 @@
 "StopStreaming ": {"prefix": "StopStreaming","body": ["StopStreaming(${1:SPint});"],"description": "StopStreaming"},
 "Print ": {"prefix": "Print","body": ["Print(${1:PrintFormat});"],"description": "Print"},
 "SetPrintText ": {"prefix": "SetPrintText","body": ["SetPrintText(${1:fmt_num}, ${2:text_string});"],"description": "SetPrintText"},
+"ProgramDelay ": {"prefix": "ProgramDelay", "body": ["ProgramDelay(${1:int_Time});"], "description": "ProgramDelay"},
 "GetDigIn ": {"prefix": "GetDigIn","body": ["GetDigIn(${1:Slot_Int}, ${2:D_int}, ${3:V_int});"],"description": "GetDigIn"},
 "GetDigOut ": {"prefix": "GetDigOut","body": ["GetDigOut(${1:Slot_Int}, ${2:D_int}, ${3:V_int});"],"description": "GetDigOut"},
 "SetDigOut ": {"prefix": "SetDigOut","body": ["SetDigOut(${1:Slot_Int}, ${2:D_int}, ${3:V_int});"],"description": "SetDigOut"},
@@ -352,11 +377,11 @@
 "BitNot ": {"prefix": "BitNot","body": ["BitNot(${1:X_int}, ${2:Y_int});"],"description": "BitNot"},
 "BitXor ": {"prefix": "BitXor","body": ["BitXor(${1:X_int}, ${2:Y_int});"],"description": "BitXor"},
 "Ceil ": {"prefix": "Ceil","body": ["Ceil(${1:X_real});"],"description": "Ceil"},
-"Chr$ ": {"prefix": "Chr$","body": ["Chr$(${1:i_int});"],"description": "Chr$"},
+"Chr$ ": {"prefix": "Chr$","body": ["Chr$(${1:i_int})"],"description": "Chr$"},
 "Cos ": {"prefix": "Cos","body": ["Cos(${1:X_real});"],"description": "Cos"},
 "Exp ": {"prefix": "Exp","body": ["Exp(${1:X_real});"],"description": "Exp"},
 "Hex$ ": {"prefix": "Hex$","body": ["Hex$(${1:i_int});"],"description": "Hex$"},
-"IntegerToString ": {"prefix": "IntegerToString","body": ["IntegerToString(${1:I}, ${2:W});"],"description": "IntegerToString"},
+"IntegerToString ": {"prefix": "IntegerToString","body": ["IntegerToString(${1:I}, ${2:W})"],"description": "IntegerToString"},
 "LCase ": {"prefix": "LCase","body": ["LCase(${1:S});"],"description": "LCase"},
 "Left$ ": {"prefix": "Left$","body": ["Left$(${1:S}, ${2:i_int});"],"description": "Left$"},
 "Len ": {"prefix": "Len","body": ["Len(${1:S});"],"description": "Len"},
@@ -364,7 +389,7 @@
 "Log10 ": {"prefix": "Log10","body": ["Log10(${1:X_real});"],"description": "Log10"},
 "Mid$ ": {"prefix": "Mid$","body": ["Mid$(${1:S}, ${2:Start_int}, ${3:Length_int});"],"description": "Mid$"},
 "Oct$ ": {"prefix": "Oct$","body": ["Oct$(${1:i_int});"],"description": "Oct$"},
-"RealToString ": {"prefix": "RealToString","body": ["RealToString(${1:R}, ${2:W}, ${3:P});"],"description": "RealToString"},
+"RealToString ": {"prefix": "RealToString","body": ["RealToString(${1:R}, ${2:W}, ${3:P})"],"description": "RealToString"},
 "Right$ ": {"prefix": "Right$","body": ["Right$(${1:S}, ${2:i_int});"],"description": "Right$"},
 "Sign ": {"prefix": "Sign","body": ["Sign(${1:X_real});"],"description": "Sign"},
 "Sin ": {"prefix": "Sin","body": ["Sin(${1:x_real});"],"description": "Sin"},
