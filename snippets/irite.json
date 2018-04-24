@@ -1,9 +1,19 @@
 {
+<<<<<<< HEAD
   "Begin end": {"prefix": "begin", "body": ["begin\r", "\t$1\r", "end;\r"
+=======
+  "Begin end": {
+  "prefix": "begin",
+  "body": [
+    "begin",
+    "\t$1",
+    "end;"
+>>>>>>> e7884077304ed7ecbb4f14ff01cb776841ddaf98
   ],
   "description": "Begin end"
   },
 
+<<<<<<< HEAD
   "SetMenuBarColor": {
     "prefix": "SetMenuBarColor",
     "body":[
@@ -12,6 +22,8 @@
     "description": "Set color of the menu bar"
   },
 
+=======
+>>>>>>> e7884077304ed7ecbb4f14ff01cb776841ddaf98
   "block comment": {
   "prefix": "blockcomment",
   "body": [
@@ -42,6 +54,7 @@
   "description": "PromptForEntry"
 },
 
+<<<<<<< HEAD
 "SetBargraphLevel": {
   "prefix": "SetBargraphLevel",
   "body": [
@@ -54,6 +67,12 @@
   "prefix": "handler",
   "body": [
     "handler ${1:HandlerName};",
+=======
+"handler": {
+  "prefix": "handler",
+  "body": [
+    "handler ${1:MyHandler};",
+>>>>>>> e7884077304ed7ecbb4f14ff01cb776841ddaf98
     "begin",
     "\t$0",
     "end;"
@@ -135,6 +154,7 @@
   "description": "if else end"
   },
 
+<<<<<<< HEAD
   "SelectScreen": {
     "prefix": "SelectScreen",
     "body":[
@@ -159,6 +179,8 @@
     "description": "DisableHandler"
   },
 
+=======
+>>>>>>> e7884077304ed7ecbb4f14ff01cb776841ddaf98
   "procedure": {
   "prefix": "procedure",
   "body": [
@@ -269,7 +291,11 @@
  "Left$": {
     "prefix": "Left$",
     "body": [
+<<<<<<< HEAD
     "Left$(${1:String_Name}, ${2:int_len})"
+=======
+    "Left$(${1:String_Name}; ${2:int_len})"
+>>>>>>> e7884077304ed7ecbb4f14ff01cb776841ddaf98
     ],
     "description": "Left$"
  },
@@ -308,6 +334,7 @@
    "description": "SetWidgetVisibility"
  },
 
+<<<<<<< HEAD
  "EventWidget": {
   "prefix": "EventWidget",
   "body": [
@@ -323,6 +350,18 @@
     ],
     "description": "EventKey"
   },
+=======
+ "For Loop": {
+    "prefix": "for loop",
+    "body": [
+      "for i := 1 to ${1:int_Count}",
+      "loop",
+      "\t$2",
+      "end loop;"
+    ],
+    "description": "For Loop"
+ },
+>>>>>>> e7884077304ed7ecbb4f14ff01cb776841ddaf98
 
  "IfElse": {
     "prefix": "if else",
@@ -344,6 +383,7 @@
    "description": "Dashes"
  },
 
+<<<<<<< HEAD
  "SetScaleSymbols": {
     "prefix": "SetScaleSymbols",
     "body": [
@@ -354,6 +394,8 @@
 
 
 
+=======
+>>>>>>> e7884077304ed7ecbb4f14ff01cb776841ddaf98
 "GetCapacity ": {"prefix": "GetCapacity","body": ["GetCapacity(${1:scaleNum}, ${2:ScaleCapacity});"],"description": "getCapacity"},
 "GetMV ": {"prefix": "GetMV","body": ["GetMV(${1:scaleNum}, ${2:MV});"],"description": "GetMV"},
 "GetGrads ": {"prefix": "GetGrads","body": ["GetGrads(${1:scaleNum}, ${2:G});"],"description": "GetGrads"},
@@ -367,6 +409,7 @@
 "PulseCount ": {"prefix": "PulseCount","body": ["PulseCount(${1:scaleNum}, ${2:C});"],"description": "PulseCount"},
 "ClearPulseCount ": {"prefix": "ClearPulseCount","body": ["ClearPulseCount(${1:scaleNum};"],"description": "ClearPulseCount"},
 "AcquireTare ": {"prefix": "AcquireTare","body": ["AcquireTare(${1:scaleNum});"],"description": "AcquireTare"},
+<<<<<<< HEAD
 "SetTare ": {"prefix": "SetTare","body": ["SetTare(${1:int_scaleNum}, ${2:unit_Units}, ${3:real_Weight});"],"description": "SetTare"},
 "GetTareType ": {"prefix": "GetTareType","body": ["GetTareType(${1:scaleNum}, ${2:TareType});"],"description": "GetTareType"},
 "ClearTare ": {"prefix": "ClearTare","body": ["ClearTare(${1:scaleNum});"],"description": "ClearTare"},
@@ -375,6 +418,16 @@
 "SetAccum ": {"prefix": "SetAccum","body": ["SetAccum(${1:int_scaleNum}, ${2:unit_Units}, ${3:real_Weight});"],"description": "SetAccum"},
 "GetAvgAccum ": {"prefix": "GetAvgAccum","body": ["GetAvgAccum(${1:scaleNum}, ${2:Units}, ${3:real_Weight});"],"description": "GetAvgAccum"},
 "GetAccumCount ": {"prefix": "GetAccumCount","body": ["GetAccumCount(${1:scaleNum}, ${2:int_Count});"],"description": "GetAccumCount"},
+=======
+"SetTare ": {"prefix": "SetTare","body": ["SetTare(${1:scaleNum}, ${2:Units}, {3:W});"],"description": "SetTare"},
+"GetTareType ": {"prefix": "GetTareType","body": ["GetTareType(${1:scaleNum}, ${2:TareType});"],"description": "GetTareType"},
+"ClearTare ": {"prefix": "ClearTare","body": ["ClearTare(${1:scaleNum});"],"description": "ClearTare"},
+"GetROC ": {"prefix": "GetROC","body": ["GetROC(${1:scaleNum}, ${2:R});"],"description": "GetROC"},
+"GetAccum ": {"prefix": "GetAccum","body": ["GetAccum(${1:scaleNum}, ${2:Units} ${3:W});"],"description": "GetAccum"},
+"SetAccum ": {"prefix": "SetAccum","body": ["SetAccum(${1:scaleNum}, ${2:Units} ${3:W});"],"description": "SetAccum"},
+"GetAvgAccum ": {"prefix": "GetAvgAccum","body": ["GetAvgAccum(${1:scaleNum}, ${2:Units}, ${3:W});"],"description": "GetAvgAccum"},
+"GetAccumCount ": {"prefix": "GetAccumCount","body": ["GetAccumCount(${1:scaleNum}, ${2:N});"],"description": "GetAccumCount"},
+>>>>>>> e7884077304ed7ecbb4f14ff01cb776841ddaf98
 "GetAccumDate ": {"prefix": "GetAccumDate","body": ["GetAccumDate(${1:scaleNum}, ${2:D});"],"description": "GetAccumDate"},
 "GetAccumTime ": {"prefix": "GetAccumTime","body": ["GetAccumTime(${1:scaleNum}, ${2:V});"],"description": "GetAccumTime"},
 "ClearAccum ": {"prefix": "ClearAccum","body": ["ClearAccum(${1:scaleNum});"],"description": "ClearAccum"},
@@ -452,7 +505,10 @@
 "UCase$ ": {"prefix": "UCase$","body": ["UCase$(${1:S});"],"description": "UCase$"},
 "KeyPress ": {"prefix": "KeyPress","body": ["KeyPress(${1:key_Keys});"],"description": "KeyPress"},
 "LockKey ": {"prefix": "LockKey","body": ["LockKey(${1:key_Keys});"],"description": "LockKey"},
+<<<<<<< HEAD
 "GetConsecNum ": {"prefix": "GetConsecNum","body": ["GetConsecNum;"],"description": "GetConsecNum"},
+=======
+>>>>>>> e7884077304ed7ecbb4f14ff01cb776841ddaf98
 "SetConsecNum ": {"prefix": "SetConsecNum","body": ["SetConsecNum(${1:Value_int});"],"description": "SetConsecNum"},
 "SetUID ": {"prefix": "SetUID","body": ["SetUID(${1:newid_string});"],"description": "SetUID"},
 "UnlockKey ": {"prefix": "UnlockKey","body": ["UnlockKey(${1:key_Keys});"],"description": "UnlockKey"},
@@ -478,6 +534,7 @@
 "ChartSetAnimation ": {"prefix": "ChartSetAnimation","body": ["ChartSetAnimation(${1:widget_num});"],"description": "ChartSetAnimation"},
 "ChartRender ": {"prefix": "ChartRender","body": ["ChartRender(${1:widget_num});"],"description": "ChartRender"},
 "ChartInsertToExisting ": {"prefix": "ChartInsertToExisting","body": ["ChartInsertToExisting(${1:widget_num}, ${2:label}, ${3:value});"],"description": "ChartInsertToExisting"},
+<<<<<<< HEAD
 "ChartInitStatic ": {"prefix": "ChartInitStatic", "body": ["ChartInitStatic(${1:int_Widgetno}, ${2:string_fillColor}, ${3:string_lineColor}, ${4:string_pointColor}, ${5:int_maxPoints});"], "description": "Creates a larger static chart"},
 "ChartClear ": {"prefix": "ChartClear", "body": ["ChartClear(${1int_WidgetNo});"], "description" : "Clears Static Chart to repopulate"},
 "ChartSetPointSize ": {"prefix": "ChartSetPointSize", "body": ["ChartSetPointSize(${1:int_Widgetno}, ${2:int_size(1-5)});"], "description": "Radius in pixels of chart point"},
@@ -487,4 +544,7 @@
 "SetupStartTimer": {"prefix": "SetupStartTimer", "body":["SetupStartTimer(${1:int_TimerNum}, ${2:int_Time}, ${3:timerType});"], "description": "RLWS iRite Template procedure to setup and start a timer"},
 "SubmitData": {"prefix": "SubmitData", "body":["SubmitData(${1:int_ScaleNum}, ${2:real_Wgt}, ${3:mode_GrossNet}, ${4:unitType_units}, ${5:real_Tare});"], "description": "Sets data for programmable scale"},
 "SubmitDSPData": {"prefix": "SubmitDSPData", "body":["SubmitData(${1:int_ScaleNum}, ${2:real_Wgt}, ${3:string_Units}, ${4:DecimalType_dp});"], "description": "Sets data for programmable scale"}
+=======
+"ReadLn ": {"prefix": "ReadLn","body": ["ReadLn(${1:varD_string});"],"description": "ReadLn"}
+>>>>>>> e7884077304ed7ecbb4f14ff01cb776841ddaf98
 }
