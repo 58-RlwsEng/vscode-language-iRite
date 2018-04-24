@@ -1,153 +1,8 @@
 {
-	"name": "irite",
-	"displayName": "Language iRite",
-	"description": "iRite support for Visual Studio Code",
-	"version": "1.0.1",
-	"publisher": "bryanmullin",
-	"galleryBanner": {
-		"color": "#4682B4",
-		"theme": "dark"
-	},
-	"engines": {
-		"vscode": "0.10.x"
-	},
-	"categories": [
-		"Languages",
-		"Snippets",
-		"Other"
-	],
-	"keywords": [
-		"irite",
-		"iRite"
-	],
-	"activationEvents": [
-		"onLanguage:irite",
-		"onCommand:irite.build"
-	],
-	"main": "./out/src/extension",
-	"icon": "images/icon.png",
-	"license": "SEE LICENSE IN LICENSE.md",
-	"homepage": "https://github.com/bryanmullin/vscode-language-irite/blob/master/README.md",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/bryanmullin/vscode-language-irite.git"
-	},
-	"bugs": {
-		"url": "https://github.com/bryanmullin/vscode-language-irite/issues"
-	},
-	"contributes": {
-		"languages": [
-			{
-				"id": "irite",
-				"aliases": [
-					"irite",
-					"iRite"
-				],
-				"extensions": [
-					".src",
-					".iri"
-				],
-				"configuration": "./irite.configuration.json"
-			}
-		],
-		"keybindings": [
-			{
-				"command": "irite.build",
-				"key": "f7",
-				"mac": "f7",
-				"when": "editorTextFocus"
-			},
-			{
-				"command": "irite.deploy",
-				"key": "f8",
-				"mac": "f8",
-				"when": "editorTextFocus"
-			}
-		],
-		"menus": {
-			"editor/title": [
-				{
-					"when": "resourceLangId == irite",
-					"command": "irite.build",
-					"group": "navigation"
-				},
-				{
-					"when": "resourceLangId == irite",
-					"command": "irite.deploy",
-					"group": "navigation"
-				}
-			]
-		},
-		"grammars": [
-			{
-				"language": "irite",
-				"scopeName": "source.irite",
-				"path": "./syntaxes/irite.tmLanguage"
-			}
-		],
-		"snippets": [
-			{
-				"language": "irite",
-				"path": "./snippets/irite.json"
-			}
-		],
-		"commands": [
-			{
-				"command": "irite.build",
-				"title": "iRite: Build | ",
-				"description": "Setup Build Enviroment"
-			},
-			{
-				"command": "irite.deploy",
-				"title": "iRite: Deploy",
-				"description": "Deploy to Indicator"
-			}
-		],
-		"configuration": {
-			"type": "object",
-			"title": "iRite Setup Build",
-			"properties": {
-				"irite.build.engine": {
-					"type": "string",
-					"default": "revolution",
-					"description": "Choose the build engine to be used",
-					"enum": [
-						"revolution",
-						"test"
-					]
-				},
-				"irite.build.enginePath": {
-					"type": "string",
-					"default": "C:\\Program Files (x86)\\Rice Lake Weighing Systems\\Revolution\\iRite Editor\\iRite_preprocessor.exe",
-					"description": "Indicates the build engine app path"
-				},
-				"irite.build.compilerPath": {
-					"type": "string",
-					"default": "C:\\Program Files (x86)\\Rice Lake Weighing Systems\\Revolution\\iRite Editor\\Compilers",
-					"description": "Indicates the compilers path"
-				}
-			}
-		}
-	},
-	"scripts": {
-		"vscode:prepublish": "node ./node_modules/vscode/bin/compile",
-		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
-		"postinstall": "node ./node_modules/vscode/bin/install"
-	},
-	"dependencies": {
-		"opener": "~1.4.1",
-		"exec": "~0.2.1"
-	},
-	"devDependencies": {
-		"typescript": "^1.6.2",
-		"vscode": "^0.11.x"
-	},
-	"__metadata": null
-=======
     "name": "irite",
     "displayName": "Language iRite",
     "description": "iRite support for Visual Studio Code",
-    "version": "1.0.4",
+    "version": "1.2.0",
     "publisher": "bryanmullin",
     "galleryBanner": {
         "color": "#4682B4",
@@ -195,28 +50,33 @@
                 "configuration": "./irite.configuration.json"
             }
         ],
-        "keybindings": [{
-        "command": "irite.build",
-        "key": "f7",
-        "mac": "f7",
-        "when": "editorTextFocus"
-        },
-        {
-        "command": "irite.deploy",
-        "key": "f8",
-        "mac": "f8",
-        "when": "editorTextFocus"
-        }],
+        "keybindings": [
+            {
+                "command": "irite.build",
+                "key": "f7",
+                "mac": "f7",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "irite.deploy",
+                "key": "f8",
+                "mac": "f8",
+                "when": "editorTextFocus"
+            }
+        ],
         "menus": {
-        "editor/title": [{
-            "when": "resourceLangId == irite",
-            "command": "irite.build",
-            "group": "navigation"
-        },{
-            "when": "resourceLangId == irite",
-            "command": "irite.deploy",
-            "group": "navigation"
-        }]
+            "editor/title": [
+                {
+                    "when": "resourceLangId == irite",
+                    "command": "irite.build",
+                    "group": "navigation"
+                },
+                {
+                    "when": "resourceLangId == irite",
+                    "command": "irite.deploy",
+                    "group": "navigation"
+                }
+            ]
         },
         "grammars": [
             {
@@ -275,11 +135,13 @@
         "postinstall": "node ./node_modules/vscode/bin/install"
     },
     "dependencies": {
-        "opener": "~1.4.1",
-        "exec": "~0.2.1"
+        "@types/node": "^8.0.53",
+        "exec": "~0.2.1",
+        "opener": "~1.4.1"
     },
     "devDependencies": {
         "typescript": "^1.6.2",
         "vscode": "^0.11.x"
-    }
+    },
+    "__metadata": null
 }
