@@ -1,12 +1,15 @@
 {
-  "Begin end": {
-  "prefix": "begin",
-  "body": [
-    "begin",
-    "\t$1",
-    "end;"
+  "Begin end": {"prefix": "begin", "body": ["begin\r", "\t$1\r", "end;\r"
   ],
   "description": "Begin end"
+  },
+
+  "SetMenuBarColor": {
+    "prefix": "SetMenuBarColor",
+    "body":[
+      "SetMenuBarColor(${1:string_Color});"
+    ],
+    "description": "Set color of the menu bar"
   },
 
   "block comment": {
@@ -21,6 +24,16 @@
   "description": "Block Comment"
   },
 
+  "IsValid": {
+  "prefix": "IsValid",
+  "body": [
+    "if isValid(${1:string_Number}, ${2:string_Type}, ${3:int_Length}) = true then",
+    "\t$4",
+    "end if;"
+  ],
+  "description": "IsValid"
+  },
+
 "PromptForEntry": {
   "prefix": "PromptForEntry",
   "body": [
@@ -29,10 +42,18 @@
   "description": "PromptForEntry"
 },
 
+"SetBargraphLevel": {
+  "prefix": "SetBargraphLevel",
+  "body": [
+    "SetBargraphLevel(${1:int_WidgetNum}, ${2:int_Percentage});"
+  ],
+  "description": "SetBargraphLevel"
+},
+
 "handler": {
   "prefix": "handler",
   "body": [
-    "handler ${1:MyHandler};",
+    "handler ${1:HandlerName};",
     "begin",
     "\t$0",
     "end;"
@@ -59,15 +80,6 @@
     "end loop;"
   ],
   "description": "for loop"
-  },
-
-  "for (no begin end)": {
-  "prefix": "forb",
-  "body": [
-    "for ${1:i} := ${2:0} to ${3:max} do",
-    "\t$0"
-  ],
-  "description": "for (no begin end)"
   },
 
   "function end": {
@@ -123,6 +135,30 @@
   "description": "if else end"
   },
 
+  "SelectScreen": {
+    "prefix": "SelectScreen",
+    "body":[
+      "SelectScreen(${1:int_ScreenNumber});"
+    ],
+    "description": "SelectScreen"
+  },
+
+  "EnableHandler": {
+    "prefix": "EnableHandler",
+    "body":[
+      "EnableHandler(${1:HandlerName});"
+    ],
+    "description": "EnableHandler"
+  },
+
+  "DisableHandler": {
+    "prefix": "DisableHandler",
+    "body":[
+      "DisableHandler(${1:HandlerName});"
+    ],
+    "description": "DisableHandler"
+  },
+
   "procedure": {
   "prefix": "procedure",
   "body": [
@@ -137,7 +173,7 @@
   "FindFirst": {
     "prefix": "FindFirst",
     "body": [
-      ".FindFirst(${1:database}, ${2:field});"
+      "FindFirst(${1:database}_${2:field})"
     ],
     "description": "FindFirst"
   },
@@ -196,6 +232,7 @@
      "prefix": "Debug",
      "body": ["WriteOutLn(g_sDebug, \"${1:int_lineNumber 2:string_Message}\");"],
      "description": "Debug TCP"
+
   },
 
   "WriteLn": {
@@ -205,14 +242,14 @@
    "WriteLn(${1:int_Port}, \"${2:string_message}\")"
 
     ],
+
   "description": "WriteLn"
   },
 
   "WriteOutLn": {
-
   "prefix": "WriteOutLn",
   "body": [
-   "WriteLn(TCPC${1:int_Port}, \"${2:string_message}\")"
+   "WriteOutLn(TCPC${1:int_Port}, \"${2:string_message}\");"
 
     ],
   "description": "WriteOutLn"
@@ -232,7 +269,7 @@
  "Left$": {
     "prefix": "Left$",
     "body": [
-    "Left$(${1:String_Name}; ${2:int_len})"
+    "Left$(${1:String_Name}, ${2:int_len})"
     ],
     "description": "Left$"
  },
@@ -251,18 +288,41 @@
       "SetWidgetColor(${1:int_WidgetID}, \"${2:string_Color}\");"
     ],
   "description": "SetLabelText"
+
  },
 
- "For Loop": {
-    "prefix": "for loop",
-    "body": [
-      "for i := 1 to ${1:int_Count}",
-      "loop",
-      "\t$2",
-      "end loop;"
+ "SetBGColor": {
+   "prefix": "SetBGColor",
+   "body": [
+      "SetBGColor(${1:color_BG}, \"${2:color_Text}\");"
     ],
-    "description": "For Loop"
+  "description": "SetLabelText"
+
  },
+
+ "SetWidgetVisibility": {
+   "prefix": "SetWidgetVisibility",
+   "body": [
+     "SetWidgetVisibility(${1:int_WidgetID}, ${2:VonVoff};"
+   ],
+   "description": "SetWidgetVisibility"
+ },
+
+ "EventWidget": {
+  "prefix": "EventWidget",
+  "body": [
+    "EventWidget"
+  ],
+  "description": "EventWidget"
+},
+
+"EventKey": {
+    "prefix": "EventKey",
+    "body": [
+      "EventKey"
+    ],
+    "description": "EventKey"
+  },
 
  "IfElse": {
     "prefix": "if else",
@@ -275,6 +335,24 @@
     ],
     "description": "if else end if;"
  },
+
+ "Separator Line": {
+   "prefix": "Dashed Line",
+   "body": [
+      "-------------------------------------------------------------------------------------"
+   ],
+   "description": "Dashes"
+ },
+
+ "SetScaleSymbols": {
+    "prefix": "SetScaleSymbols",
+    "body": [
+      "SetScaleSymbols(${1:string_BlackWhite});"
+    ],
+    "Description": "Sets the color of the scale symbols"
+ },
+
+
 
 "GetCapacity ": {"prefix": "GetCapacity","body": ["GetCapacity(${1:scaleNum}, ${2:ScaleCapacity});"],"description": "getCapacity"},
 "GetMV ": {"prefix": "GetMV","body": ["GetMV(${1:scaleNum}, ${2:MV});"],"description": "GetMV"},
@@ -289,14 +367,14 @@
 "PulseCount ": {"prefix": "PulseCount","body": ["PulseCount(${1:scaleNum}, ${2:C});"],"description": "PulseCount"},
 "ClearPulseCount ": {"prefix": "ClearPulseCount","body": ["ClearPulseCount(${1:scaleNum};"],"description": "ClearPulseCount"},
 "AcquireTare ": {"prefix": "AcquireTare","body": ["AcquireTare(${1:scaleNum});"],"description": "AcquireTare"},
-"SetTare ": {"prefix": "SetTare","body": ["SetTare(${1:scaleNum}, ${2:Units}, {3:W});"],"description": "SetTare"},
+"SetTare ": {"prefix": "SetTare","body": ["SetTare(${1:int_scaleNum}, ${2:unit_Units}, ${3:real_Weight});"],"description": "SetTare"},
 "GetTareType ": {"prefix": "GetTareType","body": ["GetTareType(${1:scaleNum}, ${2:TareType});"],"description": "GetTareType"},
 "ClearTare ": {"prefix": "ClearTare","body": ["ClearTare(${1:scaleNum});"],"description": "ClearTare"},
-"GetROC ": {"prefix": "GetROC","body": ["GetROC(${1:scaleNum}, ${2:R});"],"description": "GetROC"},
-"GetAccum ": {"prefix": "GetAccum","body": ["GetAccum(${1:scaleNum}, ${2:Units} ${3:W});"],"description": "GetAccum"},
-"SetAccum ": {"prefix": "SetAccum","body": ["SetAccum(${1:scaleNum}, ${2:Units} ${3:W});"],"description": "SetAccum"},
-"GetAvgAccum ": {"prefix": "GetAvgAccum","body": ["GetAvgAccum(${1:scaleNum}, ${2:Units}, ${3:W});"],"description": "GetAvgAccum"},
-"GetAccumCount ": {"prefix": "GetAccumCount","body": ["GetAccumCount(${1:scaleNum}, ${2:N});"],"description": "GetAccumCount"},
+"GetROC ": {"prefix": "GetROC","body": ["GetROC(${1:int_scaleNum}, ${2:real_ROC});"],"description": "GetROC"},
+"GetAccum ": {"prefix": "GetAccum","body": ["GetAccum(${1:int_scaleNum}, ${2:unit_Units}, ${3:real_Weight});"],"description": "GetAccum"},
+"SetAccum ": {"prefix": "SetAccum","body": ["SetAccum(${1:int_scaleNum}, ${2:unit_Units}, ${3:real_Weight});"],"description": "SetAccum"},
+"GetAvgAccum ": {"prefix": "GetAvgAccum","body": ["GetAvgAccum(${1:scaleNum}, ${2:Units}, ${3:real_Weight});"],"description": "GetAvgAccum"},
+"GetAccumCount ": {"prefix": "GetAccumCount","body": ["GetAccumCount(${1:scaleNum}, ${2:int_Count});"],"description": "GetAccumCount"},
 "GetAccumDate ": {"prefix": "GetAccumDate","body": ["GetAccumDate(${1:scaleNum}, ${2:D});"],"description": "GetAccumDate"},
 "GetAccumTime ": {"prefix": "GetAccumTime","body": ["GetAccumTime(${1:scaleNum}, ${2:V});"],"description": "GetAccumTime"},
 "ClearAccum ": {"prefix": "ClearAccum","body": ["ClearAccum(${1:scaleNum});"],"description": "ClearAccum"},
@@ -337,6 +415,7 @@
 "StopStreaming ": {"prefix": "StopStreaming","body": ["StopStreaming(${1:SPint});"],"description": "StopStreaming"},
 "Print ": {"prefix": "Print","body": ["Print(${1:PrintFormat});"],"description": "Print"},
 "SetPrintText ": {"prefix": "SetPrintText","body": ["SetPrintText(${1:fmt_num}, ${2:text_string});"],"description": "SetPrintText"},
+"ProgramDelay ": {"prefix": "ProgramDelay", "body": ["ProgramDelay(${1:int_Time});"], "description": "ProgramDelay"},
 "GetDigIn ": {"prefix": "GetDigIn","body": ["GetDigIn(${1:Slot_Int}, ${2:D_int}, ${3:V_int});"],"description": "GetDigIn"},
 "GetDigOut ": {"prefix": "GetDigOut","body": ["GetDigOut(${1:Slot_Int}, ${2:D_int}, ${3:V_int});"],"description": "GetDigOut"},
 "SetDigOut ": {"prefix": "SetDigOut","body": ["SetDigOut(${1:Slot_Int}, ${2:D_int}, ${3:V_int});"],"description": "SetDigOut"},
@@ -348,11 +427,11 @@
 "BitNot ": {"prefix": "BitNot","body": ["BitNot(${1:X_int}, ${2:Y_int});"],"description": "BitNot"},
 "BitXor ": {"prefix": "BitXor","body": ["BitXor(${1:X_int}, ${2:Y_int});"],"description": "BitXor"},
 "Ceil ": {"prefix": "Ceil","body": ["Ceil(${1:X_real});"],"description": "Ceil"},
-"Chr$ ": {"prefix": "Chr$","body": ["Chr$(${1:i_int});"],"description": "Chr$"},
+"Chr$ ": {"prefix": "Chr$","body": ["Chr$(${1:i_int})"],"description": "Chr$"},
 "Cos ": {"prefix": "Cos","body": ["Cos(${1:X_real});"],"description": "Cos"},
 "Exp ": {"prefix": "Exp","body": ["Exp(${1:X_real});"],"description": "Exp"},
 "Hex$ ": {"prefix": "Hex$","body": ["Hex$(${1:i_int});"],"description": "Hex$"},
-"IntegerToString ": {"prefix": "IntegerToString","body": ["IntegerToString(${1:I}, ${2:W});"],"description": "IntegerToString"},
+"IntegerToString ": {"prefix": "IntegerToString","body": ["IntegerToString(${1:I}, ${2:W})"],"description": "IntegerToString"},
 "LCase ": {"prefix": "LCase","body": ["LCase(${1:S});"],"description": "LCase"},
 "Left$ ": {"prefix": "Left$","body": ["Left$(${1:S}, ${2:i_int});"],"description": "Left$"},
 "Len ": {"prefix": "Len","body": ["Len(${1:S});"],"description": "Len"},
@@ -360,7 +439,7 @@
 "Log10 ": {"prefix": "Log10","body": ["Log10(${1:X_real});"],"description": "Log10"},
 "Mid$ ": {"prefix": "Mid$","body": ["Mid$(${1:S}, ${2:Start_int}, ${3:Length_int});"],"description": "Mid$"},
 "Oct$ ": {"prefix": "Oct$","body": ["Oct$(${1:i_int});"],"description": "Oct$"},
-"RealToString ": {"prefix": "RealToString","body": ["RealToString(${1:R}, ${2:W}, ${3:P});"],"description": "RealToString"},
+"RealToString ": {"prefix": "RealToString","body": ["RealToString(${1:R}, ${2:W}, ${3:P})"],"description": "RealToString"},
 "Right$ ": {"prefix": "Right$","body": ["Right$(${1:S}, ${2:i_int});"],"description": "Right$"},
 "Sign ": {"prefix": "Sign","body": ["Sign(${1:X_real});"],"description": "Sign"},
 "Sin ": {"prefix": "Sin","body": ["Sin(${1:x_real});"],"description": "Sin"},
@@ -373,6 +452,7 @@
 "UCase$ ": {"prefix": "UCase$","body": ["UCase$(${1:S});"],"description": "UCase$"},
 "KeyPress ": {"prefix": "KeyPress","body": ["KeyPress(${1:key_Keys});"],"description": "KeyPress"},
 "LockKey ": {"prefix": "LockKey","body": ["LockKey(${1:key_Keys});"],"description": "LockKey"},
+"GetConsecNum ": {"prefix": "GetConsecNum","body": ["GetConsecNum;"],"description": "GetConsecNum"},
 "SetConsecNum ": {"prefix": "SetConsecNum","body": ["SetConsecNum(${1:Value_int});"],"description": "SetConsecNum"},
 "SetUID ": {"prefix": "SetUID","body": ["SetUID(${1:newid_string});"],"description": "SetUID"},
 "UnlockKey ": {"prefix": "UnlockKey","body": ["UnlockKey(${1:key_Keys});"],"description": "UnlockKey"},
@@ -398,5 +478,13 @@
 "ChartSetAnimation ": {"prefix": "ChartSetAnimation","body": ["ChartSetAnimation(${1:widget_num});"],"description": "ChartSetAnimation"},
 "ChartRender ": {"prefix": "ChartRender","body": ["ChartRender(${1:widget_num});"],"description": "ChartRender"},
 "ChartInsertToExisting ": {"prefix": "ChartInsertToExisting","body": ["ChartInsertToExisting(${1:widget_num}, ${2:label}, ${3:value});"],"description": "ChartInsertToExisting"},
-"ReadLn ": {"prefix": "ReadLn","body": ["ReadLn(${1:varD_string});"],"description": "ReadLn"}
+"ChartInitStatic ": {"prefix": "ChartInitStatic", "body": ["ChartInitStatic(${1:int_Widgetno}, ${2:string_fillColor}, ${3:string_lineColor}, ${4:string_pointColor}, ${5:int_maxPoints});"], "description": "Creates a larger static chart"},
+"ChartClear ": {"prefix": "ChartClear", "body": ["ChartClear(${1int_WidgetNo});"], "description" : "Clears Static Chart to repopulate"},
+"ChartSetPointSize ": {"prefix": "ChartSetPointSize", "body": ["ChartSetPointSize(${1:int_Widgetno}, ${2:int_size(1-5)});"], "description": "Radius in pixels of chart point"},
+"ReadLn ": {"prefix": "ReadLn","body": ["ReadLn(${1:varD_string});"],"description": "ReadLn"},
+"BusyShow ": {"prefix": "BusyShow", "body":["BusyShow;"], "description": "Shows Busy Symbol On Screen"},
+"BusyHide ": {"prefix": "BusyHide", "body":["BusyHide;"], "description": "Removes Busy Symbol On Screen"},
+"SetupStartTimer": {"prefix": "SetupStartTimer", "body":["SetupStartTimer(${1:int_TimerNum}, ${2:int_Time}, ${3:timerType});"], "description": "RLWS iRite Template procedure to setup and start a timer"},
+"SubmitData": {"prefix": "SubmitData", "body":["SubmitData(${1:int_ScaleNum}, ${2:real_Wgt}, ${3:mode_GrossNet}, ${4:unitType_units}, ${5:real_Tare});"], "description": "Sets data for programmable scale"},
+"SubmitDSPData": {"prefix": "SubmitDSPData", "body":["SubmitData(${1:int_ScaleNum}, ${2:real_Wgt}, ${3:string_Units}, ${4:DecimalType_dp});"], "description": "Sets data for programmable scale"}
 }
