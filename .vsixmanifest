@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Language="en-US" Id="irite" Version="1.0.1" Publisher="bryanmullin"/>
+    <Identity Language="en-US" Id="irite" Version="1.2.0" Publisher="RLWS"/>
     <DisplayName>Language iRite</DisplayName>
     <Description xml:space="preserve">iRite support for Visual Studio Code</Description>
-    <Tags>irite,iRite,snippet</Tags>
-    <Categories>Languages,Snippets,Other</Categories>
+    <Tags>irite,iRite,snippet,keybindings,__ext_src,__ext_iri</Tags>
+    <Categories>Programming Languages,Snippets,Other</Categories>
     <GalleryFlags>Public</GalleryFlags>
+    <Badges></Badges>
     <Properties>
+      <Property Id="Microsoft.VisualStudio.Code.Engine" Value="0.10.x" />
+      <Property Id="Microsoft.VisualStudio.Code.ExtensionDependencies" Value="" />
+      <Property Id="Microsoft.VisualStudio.Code.ExtensionPack" Value="" />
       
-        <Property Id="Microsoft.VisualStudio.Services.Links.Source" Value="https://github.com/bryanmullin/vscode-language-irite.git" />
-        <Property Id="Microsoft.VisualStudio.Services.Links.Getstarted" Value="https://github.com/bryanmullin/vscode-language-irite.git" />
-        <Property Id="Microsoft.VisualStudio.Services.Links.Repository" Value="https://github.com/bryanmullin/vscode-language-irite.git" />
+        <Property Id="Microsoft.VisualStudio.Services.Links.Source" Value="https://github.com/58-RlwsEng/vscode-language-iRite.git" />
+        <Property Id="Microsoft.VisualStudio.Services.Links.Getstarted" Value="https://github.com/58-RlwsEng/vscode-language-iRite.git" />
+        
+          <Property Id="Microsoft.VisualStudio.Services.Links.GitHub" Value="https://github.com/58-RlwsEng/vscode-language-iRite.git" />
+        
       
-      <Property Id="Microsoft.VisualStudio.Services.Links.Support" Value="https://github.com/bryanmullin/vscode-language-irite/issues" />
-      <Property Id="Microsoft.VisualStudio.Services.Links.Learn" Value="https://github.com/bryanmullin/vscode-language-irite/blob/master/README.md" />
+      <Property Id="Microsoft.VisualStudio.Services.Links.Support" Value="https://github.com/58-RlwsEng/vscode-language-iRite/issues" />
+      <Property Id="Microsoft.VisualStudio.Services.Links.Learn" Value="https://github.com/58-RlwsEng/vscode-language-iRite/blob/master/README.md" />
       <Property Id="Microsoft.VisualStudio.Services.Branding.Color" Value="#4682B4" />
       <Property Id="Microsoft.VisualStudio.Services.Branding.Theme" Value="dark" />
+      <Property Id="Microsoft.VisualStudio.Services.GitHubFlavoredMarkdown" Value="true" />
+      
+      
     </Properties>
     <License>extension/LICENSE.md</License>
     <Icon>extension/images/icon.png</Icon>
