@@ -61,57 +61,81 @@ export function activate(context: vscode.ExtensionContext) {
   //registercommands takes reference from package.json, alter that file for more/different commands
   vscode.commands.registerCommand("irite.build", () => {
       vscode.workspace.saveAll().then(success => {
-          if (success) {
-              checkEngineDefined().then(engineType => {
+        if (success) {
+          vscode.workspace.findFiles("*.src", "system.src", 1).then(result => {
+            vscode.workspace.openTextDocument(result[0]).then(srcFile => {
+              vscode.window.showTextDocument(srcFile).then(srcEditor => {
+                checkEngineDefined().then(engineType => {
                   checkEnginePathDefined(engineType.toString()).then(engineParameters => {
-                      //got engine path and compiler from config, now init active window and push to iRiteProcessor
-                      //iRiteProcessor takes argument of desired .src file path
-                      let enginePath: string = vscode.workspace
-                          .getConfiguration("irite")
-                          .get("build.enginePath", "");
-                      let compilerPath: string = vscode.workspace
-                          .getConfiguration("irite")
-                          .get("build.compilerPath", "");
-                      let textEditor = vscode.window.activeTextEditor;
-                      iRiteChannel.append(
-                          "*************************************\n" +
-                          "*************************************\n" +
-                          "iRite Building: " +
-                          textEditor.document.fileName +
-                          "\n"
-                      );
-                      let filepath = textEditor.document.fileName;
-                      var path = enginePath;
+                    //got engine path and compiler from config, now init active window and push to iRiteProcessor
+                    //iRiteProcessor takes argument of desired .src file path
+                    let enginePath: string = vscode.workspace
+                      .getConfiguration("irite")
+                      .get("build.enginePath", "");
+                    let compilerPath: string = vscode.workspace
+                      .getConfiguration("irite")
+                      .get("build.compilerPath", "");
+                    let textEditor = vscode.window.activeTextEditor;
+                    iRiteChannel.append(
+                      "*************************************\n" +
+                      "*************************************\n" +
+                      "iRite Building: " +
+                      textEditor.document.fileName +
+                      "\n"
+                    );
 
-                      cp.execFile(path, [filepath, compilerPath, "build"], function (
-                          error,
-                          data,
-                          stderr
-                      ) {
-                          if (stderr != null) {
-                              console.log(error);
-                              console.log(stderr);
-                          }
-                          iRiteChannel.append(data);
-                      });
+                    let filepath = textEditor.document.fileName;
+                    var path = enginePath;
+
+                    cp.execFile(path, [filepath, compilerPath, "build"], function (
+                      error,
+                      data,
+                      stderr
+                    ) {
+                      if (stderr != null) {
+                        console.log(error);
+                        console.log(stderr);
+                      }
+                      iRiteChannel.append(data);
+                    });
                   })
-                      .catch(error => {
-                          vscode.window.showErrorMessage(error);
-                      });
-              })
+                    .catch(error => {
+                      vscode.window.showErrorMessage(error);
+                    });
+                })
                   .catch(error => {
-                      vscode.window.setStatusBarMessage("checkEngineDefined: " + error, 5000);
+                    vscode.window.setStatusBarMessage("checkEngineDefined: " + error, 5000);
                   });
-          } else {
-              vscode.window.setStatusBarMessage("Error Saving Files SBMsg", 5000);
-              vscode.window.showErrorMessage("Error Saving Files EM");
-              iRiteChannel.append("\n\n*************************************\nError Saving Files.  Rectify and rebuild.\n*************************************\n\n");
-          }
-    })
+              })
+            },
+              reason => {
+                vscode.window.showErrorMessage(reason);
+                iRiteChannel.append("Cannot Open src File");
+              }
+            );
+          },
+            reason => {
+              vscode.window.showErrorMessage(reason);
+              iRiteChannel.append(
+                "*************************************\n" +
+                "*************************************\n" +
+                "*************************************\n" +
+                "*************************************\n");
+            }
+          );
+
+
+        } else {
+            vscode.window.setStatusBarMessage("Error Saving Files SBMsg", 5000);
+            vscode.window.showErrorMessage("Error Saving Files EM");
+            iRiteChannel.append("\n\n*************************************\nError Saving Files.  Rectify and rebuild.\n*************************************\n\n");
+        }
+      })
   });
 
   //registercommands takes reference from package.json, alter that file for more/different commands
   vscode.commands.registerCommand("irite.deploy", () => {
+    // vscode.commands.executeCommand("irite.build");  // WOrry about this later :)
     checkEngineDefined()
       .then(engineType => {
         checkEnginePathDefined(engineType.toString())
