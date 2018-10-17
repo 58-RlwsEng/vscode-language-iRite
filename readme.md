@@ -33,3 +33,5 @@ Defaults are established on build, but must be modified for which indicator you 
 # Deployment
 
 * Ensure the irite.settings.json file has been modified to your system specs and then click iRite: Deploy
+#### 2.0.2
+    * Added ability for VSCode to select the .src file regardless of which file is active or which window.  Autosaves all workspace files. 
