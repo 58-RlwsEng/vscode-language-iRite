@@ -1,1 +1,0 @@
-comment=Fixed issue when trying to build with a single file open as opposed to a folder or workspace.  Error message is given with instructions. 

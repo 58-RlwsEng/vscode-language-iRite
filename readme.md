@@ -37,3 +37,5 @@ Defaults are established on build, but must be modified for which indicator you 
     * Added ability for VSCode to select the .src file regardless of which file is active or which window.  Autosaves all workspace files. 
 #### 2.1.0
     * Fixed issue when trying to build with a single file open as opposed to a folder or workspace.  Error message is given with instructions. 
+#### 2.1.0
+    * Fixed issue when trying to build with a single file open as opposed to a folder or workspace.  Error message is given with instructions. 
