@@ -1,1 +1,0 @@
-comment=Added ability for VSCode to select the .src file regardless of which file is active or which window.  Autosaves all workspace files. 

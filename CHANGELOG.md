@@ -1,6 +1,11 @@
 ChangeLog
 =========
 
+#### 2.1.0
+
+-   Fixed error when trying to build with only a file open.
+    Workspace/folder is required.
+
 #### 2.0.2
 
 -   Autosaves all workspace files and selects the src before building.
