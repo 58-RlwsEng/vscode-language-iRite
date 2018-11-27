@@ -1,6 +1,10 @@
 ChangeLog
 =========
 
+#### 2.1.1
+
+-   Patched security flaw introduced by flatmap-stream malware.
+
 #### 2.1.0
 
 -   Fixed error when trying to build with only a file open.
