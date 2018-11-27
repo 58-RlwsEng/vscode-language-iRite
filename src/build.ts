@@ -27,7 +27,7 @@ export class Builder {
     public format(range: vscode.Range, engine: string, path: string, parameters: string, indent: number, wrapLineLength: number) {
 
         return new Promise((resolve, reject) => {
-        
+
             // entire document - if not range is provided
             range = range || new vscode.Range(
                 0, 0,
@@ -46,39 +46,36 @@ export class Builder {
             if (textToFormat) {
 
                 try {
-                    
-                    // 
+
+                    //
                     if (engine == 'ptop') {
                         if (parameters != '') {
-                            configFileParameters = ' -c ' + parameters; 
+                            configFileParameters = ' -c ' + parameters;
                         }
-                        
+
                         let indentConfig: string = '';
                         if (indent > 0) {
                             indentConfig = ' -i ' + indent
                         }
-                        
+
                         let wrapLineLengthConfig: string = '';
                         if (wrapLineLength > 0) {
                             wrapLineLengthConfig = ' -l ' + wrapLineLength
                         }
-                        
+
                         command = "\"" + path + "\" " + configFileParameters + indentConfig + wrapLineLengthConfig + ' \"$file\" \"$outfile\" ';
                         command = command.replace('$file', tempFile);
-                        command = command.replace('$outfile', tempFileOut);   
+                        command = command.replace('$outfile', tempFileOut);
                     } else { // jcf
                         if (parameters != '') {
-                            configFileParameters = ' -config=' + parameters; 
+                            configFileParameters = ' -config=' + parameters;
                         }
                         command = "\"" + path + "\" " + configFileParameters + '  -y -F \"$file\" ';
                         command = command.replace('$file', tempFile);
                     }
-                    
+
                     console.log(command);
                     cp.exec(command, function(error, stdout, stderr) {
-                        console.log('stdout' + stdout);
-                        console.log('error' + error);
-                        console.log('stderr' + stderr);
                         if (error) {
                             reject(stdout.toString());
                         }

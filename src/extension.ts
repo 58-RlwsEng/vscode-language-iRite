@@ -84,9 +84,11 @@ export function activate(context: vscode.ExtensionContext) {
                           let enginePath: string = vscode.workspace
                             .getConfiguration("irite")
                             .get("build.enginePath", "");
+                          iRiteChannel.append("Engine Path: " + enginePath + "\n");
                           let compilerPath: string = vscode.workspace
                             .getConfiguration("irite")
                             .get("build.compilerPath", "");
+                            iRiteChannel.append("Compiler Path: " + compilerPath + "\n");
                           let textEditor = vscode.window.activeTextEditor;
                           iRiteChannel.append(
                             "*************************************\n" +
@@ -97,6 +99,7 @@ export function activate(context: vscode.ExtensionContext) {
 
                           let filepath = textEditor.document.fileName;
                           var path = enginePath;
+                          iRiteChannel.append("Path: " + path.toString() + "\n");
 
                           cp.execFile(
                             path,
@@ -106,7 +109,6 @@ export function activate(context: vscode.ExtensionContext) {
                                 console.log(error);
                                 console.log(stderr);
                               }
-                              iRiteChannel.append(data);
                             }
                           );
                         })
