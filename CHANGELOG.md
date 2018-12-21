@@ -1,12 +1,12 @@
 ChangeLog
 =========
 
-#### 2.1.2
+#### 2.3.0
 
 -   Fixed issue in which the compiler success/fail message as well as
     any compiler issues did not show in the console.
 
-#### 2.1.1
+#### 2.2.0
 
 -   Patched security flaw introduced by flatmap-stream malware.
 
