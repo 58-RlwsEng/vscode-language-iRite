@@ -1,1 +1,1 @@
-comment=Fixed issue with iRite console not showing proper information
+comment=Fixed issue with iRite console not showing compiler messages

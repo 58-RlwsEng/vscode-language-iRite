@@ -39,3 +39,5 @@ Deployment
 -   Ensure the irite.settings.json file has been modified to your system
     specs and then click iRite: Deploy
 
+#### 2.3.0
+    * Fixed issue with iRite console not showing compiler messages
