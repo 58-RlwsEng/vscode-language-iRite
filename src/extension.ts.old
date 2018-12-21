@@ -88,8 +88,9 @@ export function activate(context: vscode.ExtensionContext) {
                           let compilerPath: string = vscode.workspace
                             .getConfiguration("irite")
                             .get("build.compilerPath", "");
-                            iRiteChannel.append("Compiler Path: " + compilerPath + "\n");
+                          iRiteChannel.append("Compiler Path: " + compilerPath + "\n");
                           let textEditor = vscode.window.activeTextEditor;
+                          iRiteChannel.append("Text Editor: " + textEditor + "\n");
                           iRiteChannel.append(
                             "*************************************\n" +
                             "Building: " +
@@ -106,14 +107,11 @@ export function activate(context: vscode.ExtensionContext) {
                             path,
                             [filepath, compilerPath, "build"],
                             function (error, data, stderr) {
-                              if (error != null) {
-                                iRiteChannel.appendLine("Compile Function ERROR: " + error + "  stderr:" + stderr + "|");
+                              if (stderr != null) {
                                 console.log(error);
                                 console.log(stderr);
-                              }else{
-                                iRiteChannel.appendLine("Compile Function No Error");
-                                iRiteChannel.append(data);
                               }
+                              iRiteChannel.append(data);
                             }
                           );
                         })

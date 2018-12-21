@@ -2,7 +2,7 @@
 	"name": "irite",
 	"displayName": "Language iRite",
 	"description": "iRite support for Visual Studio Code",
-	"version": "2.2.0",
+	"version": "2.2.1",
 	"publisher": "RLWS",
 	"galleryBanner": {
 		"color": "#4682B4",
