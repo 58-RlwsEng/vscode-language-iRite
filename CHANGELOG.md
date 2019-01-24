@@ -1,7 +1,13 @@
 ChangeLog
 =========
 
-#### 2.3.0
+#### 2.4.0
+
+-   Fixed issue in which the console did not auto-scroll to the bottom
+    so any compiler success/fail message as well as any compiler issues
+    did not show.
+
+#### 2.3.1
 
 -   Fixed issue in which the compiler success/fail message as well as
     any compiler issues did not show in the console.

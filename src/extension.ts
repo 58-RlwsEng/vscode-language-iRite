@@ -61,6 +61,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   //registercommands takes reference from package.json, alter that file for more/different commands
   vscode.commands.registerCommand("irite.build", () => {
+    iRiteChannel.clear;
     iRiteChannel.appendLine("Build Started");
     vscode.workspace.saveAll().then(
       success => {

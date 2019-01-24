@@ -1,5 +1,6 @@
 Title DEPLOY VSCode_iRite
 setlocal enabledelayedexpansion
+start changelog.md 
 git init
 git add --all
 set /p comment= Enter Comment:
