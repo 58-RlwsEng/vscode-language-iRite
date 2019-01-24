@@ -1,1 +1,1 @@
-comment=Fixed issue in which the console did not auto-scroll to the bottom
+comment=-   Fixed issue in which the console did not auto-scroll to the bottom
