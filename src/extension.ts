@@ -69,10 +69,17 @@ export function activate(context: vscode.ExtensionContext) {
           iRiteChannel.appendLine("\nAll Files Saved");
           vscode.workspace.findFiles("*.src", "system.src", 1).then(
             result => {
+              var openTextDoc;
               if (result.length > 0) {
                 {
-                  iRiteChannel.appendLine(result[0].fsPath.toString() + " src File in Workspace");
-                  var openTextDoc = vscode.workspace.openTextDocument(result[0]);
+                  if(result.length <= 1){
+                    iRiteChannel.appendLine(result[0].fsPath.toString() + " src File in Workspace");
+                    openTextDoc = vscode.workspace.openTextDocument(result[0]);
+                  } else {
+                    openTextDoc = vscode.window.activeTextEditor.document;
+                    iRiteChannel.appendLine("Mulitple Found trying Active Editor: " +  openTextDoc);
+                 }
+
                   openTextDoc.then(srcFile => {
                     iRiteChannel.appendLine("fsPath: " + result[0].fsPath);
                     iRiteChannel.appendLine(srcFile.fileName + " Opened");

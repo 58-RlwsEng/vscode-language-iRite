@@ -1,1 +1,0 @@
-comment=Fixed issue in which the console did not auto-scroll to the bottom so any compiler success/fail message as well as any compiler issues did not show.
