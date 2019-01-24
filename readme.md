@@ -41,3 +41,5 @@ Deployment
 
 #### 2.3.0
     * Fixed issue with iRite console not showing compiler messages
+#### 2.4.0
+    * Fixed issue in which the console did not auto-scroll to the bottom so any compiler success/fail message as well as any compiler issues did not show.
