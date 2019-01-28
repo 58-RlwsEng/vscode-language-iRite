@@ -26,7 +26,7 @@ export function activate(context: vscode.ExtensionContext) {
     .get("build.enginePath", "");
   var optionRev = <vscode.MessageItem>{ title: "Get Revolution" };
 
-  fs.stat(enginePath, function (err, stat) {
+  fs.stat(enginePath, function(err, stat) {
     if (err == null) {
       console.log("Revolution exists");
     } else if (err.code == "ENOENT") {
@@ -55,36 +55,30 @@ export function activate(context: vscode.ExtensionContext) {
     }
   });
 
-  //shows iRite output on seperate debug output channel
-  iRiteChannel.clear;
-  iRiteChannel.show();
-
   //registercommands takes reference from package.json, alter that file for more/different commands
   vscode.commands.registerCommand("irite.build", () => {
-    iRiteChannel.clear;
-    iRiteChannel.appendLine("Build Started");
+    iRiteChannel.clear();
     vscode.workspace.saveAll().then(
       success => {
         if (success) {
-          iRiteChannel.appendLine("\nAll Files Saved");
-          vscode.workspace.findFiles("*.src", "system.src", 1).then(
+          iRiteChannel.appendLine("All Files Saved");
+          vscode.workspace.findFiles("*.src", "system.src", 100).then(
             result => {
               var openTextDoc;
               if (result.length > 0) {
                 {
-                  if(result.length <= 1){
-                    iRiteChannel.appendLine(result[0].fsPath.toString() + " src File in Workspace");
-                    openTextDoc = vscode.workspace.openTextDocument(result[0]);
+                  if(result.length > 1){
+                    openTextDoc = new Promise(function (resolve, reject) {
+                      resolve(vscode.window.activeTextEditor.document);
+                    });
+
                   } else {
-                    openTextDoc = vscode.window.activeTextEditor.document;
-                    iRiteChannel.appendLine("Mulitple Found trying Active Editor: " +  openTextDoc);
-                 }
+                    openTextDoc = vscode.workspace.openTextDocument(result[0]);
+                  }
 
                   openTextDoc.then(srcFile => {
-                    iRiteChannel.appendLine("fsPath: " + result[0].fsPath);
-                    iRiteChannel.appendLine(srcFile.fileName + " Opened");
+                    iRiteChannel.show();
                     vscode.window.showTextDocument(srcFile).then(srcEditor => {
-                      iRiteChannel.appendLine("src File Active");
                       checkEngineDefined().then(engineType => {
                         checkEnginePathDefined(engineType.toString()).then(engineParameters => {
                           //got engine path and compiler from config, now init active window and push to iRiteProcessor
@@ -92,23 +86,14 @@ export function activate(context: vscode.ExtensionContext) {
                           let enginePath: string = vscode.workspace
                             .getConfiguration("irite")
                             .get("build.enginePath", "");
-                          iRiteChannel.append("Engine Path: " + enginePath + "\n");
                           let compilerPath: string = vscode.workspace
                             .getConfiguration("irite")
                             .get("build.compilerPath", "");
-                            iRiteChannel.append("Compiler Path: " + compilerPath + "\n");
                           let textEditor = vscode.window.activeTextEditor;
-                          iRiteChannel.append(
-                            "*************************************\n" +
-                            "Building: " +
-                            textEditor.document.fileName +
-                            "\n*************************************\n"
-                          );
+                          iRiteChannel.appendLine("Building: " + textEditor.document.fileName);
 
                           let filepath = textEditor.document.fileName;
                           var path = enginePath;
-                          iRiteChannel.append("Path: " + path.toString() + "\n");
-                          iRiteChannel.appendLine("filepath: " + filepath + " compiler path: " + compilerPath);
 
                           cp.execFile(
                             path,
@@ -119,8 +104,7 @@ export function activate(context: vscode.ExtensionContext) {
                                 console.log(error);
                                 console.log(stderr);
                               }else{
-                                iRiteChannel.appendLine("Compile Function No Error");
-                                iRiteChannel.append(data);
+                                iRiteChannel.appendLine(data);
                               }
                             }
                           );
@@ -145,26 +129,38 @@ export function activate(context: vscode.ExtensionContext) {
                     );
                   },
                     err => {
-                      vscode.window.showErrorMessage("Error 136: Invalid Workspace.  Please open folder/workspace and rebuild | ");
-                      iRiteChannel.appendLine("Error 137: Invalid Workspace.  Please open folder/workspace and rebuild");
-                      vscode.window.setStatusBarMessage("Error 138: Invalid Workspace.  Please open folder/workspace and rebuild | ", 5000);
+                      vscode.window.showErrorMessage(
+                        "Error 136: Invalid Workspace.  Please open folder/workspace and rebuild | "
+                      );
+                      iRiteChannel.appendLine(
+                        "Error 137: Invalid Workspace.  Please open folder/workspace and rebuild"
+                      );
+                      vscode.window.setStatusBarMessage(
+                        "Error 138: Invalid Workspace.  Please open folder/workspace and rebuild | ",
+                        5000
+                      );
                     }
-                  )
+                  );
                 }
               } else {
-                vscode.window.showErrorMessage("Error 140: Invalid Workspace.  Please open folder/workspace and rebuild");
+                vscode.window.showErrorMessage(
+                  "Error 140: Invalid Workspace.  Please open folder/workspace and rebuild"
+                );
                 iRiteChannel.appendLine(
                   "\n***********************************************************************************" +
-                  "\n********* Invalid Workspace.  Please open folder / workspace and rebuild **********" +
-                  "\n***********************************************************************************\n"
+                    "\n********* Invalid Workspace.  Please open folder / workspace and rebuild **********" +
+                    "\n***********************************************************************************\n"
                 );
               }
             },
             reason => {
-              vscode.window.showErrorMessage(reason + "\nMust have Workspace Open to compile!\n\n");
+              vscode.window.showErrorMessage(
+                reason + "\nMust have Workspace Open to compile!\n\n"
+              );
               iRiteChannel.appendLine("Must have Workspace Open to Compile!");
-              vscode.window.setStatusBarMessage(reason + "\nMust have Workspace Open to compile!\n\n");
-
+              vscode.window.setStatusBarMessage(
+                reason + "\nMust have Workspace Open to compile!\n\n"
+              );
             }
           );
         } else {
@@ -180,10 +176,10 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.window.setStatusBarMessage(reason + "\nUnable to Save!\n\n");
         iRiteChannel.append(
           "*************************************\n" +
-          "*************************************\n" +
-          "Unable to Save!" +
-          "*************************************\n" +
-          "*************************************\n"
+            "*************************************\n" +
+            "Unable to Save!" +
+            "*************************************\n" +
+            "*************************************\n"
         );
         iRiteChannel.append("\nError 171: Please open folder(workspace).\n");
       }
@@ -208,10 +204,10 @@ export function activate(context: vscode.ExtensionContext) {
             let textEditor = vscode.window.activeTextEditor;
             iRiteChannel.append(
               "*************************************\n" +
-              "*************************************\n" +
-              "iRite Deploying: " +
-              textEditor.document.fileName +
-              "\n"
+                "*************************************\n" +
+                "iRite Deploying: " +
+                textEditor.document.fileName +
+                "\n"
             );
             let filepath = textEditor.document.fileName;
             var path = enginePath;

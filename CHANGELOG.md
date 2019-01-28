@@ -1,6 +1,15 @@
 ChangeLog
 =========
 
+#### 2.5.1
+
+-   Fixed issue when multiple .src files are present in the
+    folder/workspace only the first one alphabetically would compile.
+    Now if only one exists will find and compile that one regardless of
+    what file is active. If more than one src file is found in the
+    folder it will compile the active window. User needs to make sure
+    they have the correct .src file active when compiling.
+
 #### 2.4.0
 
 -   Fixed issue in which the console did not auto-scroll to the bottom
