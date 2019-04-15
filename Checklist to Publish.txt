@@ -1,0 +1,4 @@
+1- Update changelog
+2- Update package.json
+3- Update package-lock.json
+4- Publish

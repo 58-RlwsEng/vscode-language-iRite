@@ -1,6 +1,12 @@
 ChangeLog
 =========
 
+#### 2.5.2
+
+-   Update 1.33 to VSCode broke the extension. Can no longer compile the
+    active window. No longer will try to search for .src just compile
+    first one.
+
 #### 2.5.1
 
 -   Fixed issue when multiple .src files are present in the

@@ -62,107 +62,80 @@ export function activate(context: vscode.ExtensionContext) {
       success => {
         if (success) {
           iRiteChannel.appendLine("All Files Saved");
-          vscode.workspace.findFiles("*.src", "system.src", 100).then(
-            result => {
-              var openTextDoc;
-              if (result.length > 0) {
-                {
-                  if(result.length > 1){
-                    openTextDoc = new Promise(function (resolve, reject) {
-                      resolve(vscode.window.activeTextEditor.document);
-                    });
 
-                  } else {
-                    openTextDoc = vscode.workspace.openTextDocument(result[0]);
-                  }
+          var openTextDoc;
+          openTextDoc = new Promise(function (resolve, reject) {
+                  resolve(vscode.window.activeTextEditor.document);
+                });
 
-                  openTextDoc.then(srcFile => {
-                    iRiteChannel.show();
-                    vscode.window.showTextDocument(srcFile).then(srcEditor => {
-                      checkEngineDefined().then(engineType => {
-                        checkEnginePathDefined(engineType.toString()).then(engineParameters => {
-                          //got engine path and compiler from config, now init active window and push to iRiteProcessor
-                          //iRiteProcessor takes argument of desired .src file path
-                          let enginePath: string = vscode.workspace
-                            .getConfiguration("irite")
-                            .get("build.enginePath", "");
-                          let compilerPath: string = vscode.workspace
-                            .getConfiguration("irite")
-                            .get("build.compilerPath", "");
-                          let textEditor = vscode.window.activeTextEditor;
-                          iRiteChannel.appendLine("Building: " + textEditor.document.fileName);
 
-                          let filepath = textEditor.document.fileName;
-                          var path = enginePath;
+          openTextDoc.then(srcFile => {
+            iRiteChannel.show();
+            vscode.window.showTextDocument(srcFile).then(srcEditor => {
+              checkEngineDefined().then(engineType => {
+                checkEnginePathDefined(engineType.toString()).then(engineParameters => {
+                  //got engine path and compiler from config, now init active window and push to iRiteProcessor
+                  //iRiteProcessor takes argument of desired .src file path
+                  let enginePath: string = vscode.workspace
+                    .getConfiguration("irite")
+                    .get("build.enginePath", "");
+                  let compilerPath: string = vscode.workspace
+                    .getConfiguration("irite")
+                    .get("build.compilerPath", "");
+                  let textEditor = vscode.window.activeTextEditor;
+                  iRiteChannel.appendLine("Building: " + textEditor.document.fileName);
 
-                          cp.execFile(
-                            path,
-                            [filepath, compilerPath, "build"],
-                            function (error, data, stderr) {
-                              if (error != null) {
-                                iRiteChannel.appendLine("Compile Function ERROR: " + error + "  stderr:" + stderr + "|");
-                                console.log(error);
-                                console.log(stderr);
-                              }else{
-                                iRiteChannel.appendLine(data);
-                              }
-                            }
-                          );
-                        })
-                          .catch(error => {
-                            vscode.window.setStatusBarMessage("Error 112: " + error, 5000)
-                            vscode.window.showErrorMessage("Open Folder to Build Properly");
-                            iRiteChannel.appendLine("Error 114:  checkEnginePathDefined: " + error);
-                          });
-                      })
-                        .catch(error => {
-                          vscode.window.showErrorMessage("Error 118: " + error);
-                          vscode.window.setStatusBarMessage("Error 119:  + checkEngineDefined: " + error, 5000);
-                          iRiteChannel.appendLine("Error 120: checkEngineDefined: " + error);
-                        });
-                    },
-                      err => {
-                        vscode.window.showErrorMessage("Error 124: " + err);
-                        vscode.window.setStatusBarMessage("Error 125: " + err, 5000);
-                        iRiteChannel.appendLine("Error 126: " + err);
+                  let filepath = textEditor.document.fileName;
+                  var path = enginePath;
+
+                  cp.execFile(
+                    path,
+                    [filepath, compilerPath, "build"],
+                    function (error, data, stderr) {
+                      if (error != null) {
+                        iRiteChannel.appendLine("Compile Function ERROR: " + error + "  stderr:" + stderr + "|");
+                        console.log(error);
+                        console.log(stderr);
+                      }else{
+                        iRiteChannel.appendLine(data);
                       }
-                    );
-                  },
-                    err => {
-                      vscode.window.showErrorMessage(
-                        "Error 136: Invalid Workspace.  Please open folder/workspace and rebuild | "
-                      );
-                      iRiteChannel.appendLine(
-                        "Error 137: Invalid Workspace.  Please open folder/workspace and rebuild"
-                      );
-                      vscode.window.setStatusBarMessage(
-                        "Error 138: Invalid Workspace.  Please open folder/workspace and rebuild | ",
-                        5000
-                      );
                     }
                   );
-                }
-              } else {
-                vscode.window.showErrorMessage(
-                  "Error 140: Invalid Workspace.  Please open folder/workspace and rebuild"
-                );
-                iRiteChannel.appendLine(
-                  "\n***********************************************************************************" +
-                    "\n********* Invalid Workspace.  Please open folder / workspace and rebuild **********" +
-                    "\n***********************************************************************************\n"
-                );
-              }
+                })
+                  .catch(error => {
+                    vscode.window.setStatusBarMessage("Error 112: " + error, 5000)
+                    vscode.window.showErrorMessage("Open Folder to Build Properly");
+                    iRiteChannel.appendLine("Error 114:  checkEnginePathDefined: " + error);
+                  });
+              })
+                .catch(error => {
+                  vscode.window.showErrorMessage("Error 118: " + error);
+                  vscode.window.setStatusBarMessage("Error 119:  + checkEngineDefined: " + error, 5000);
+                  iRiteChannel.appendLine("Error 120: checkEngineDefined: " + error);
+                });
             },
-            reason => {
+              err => {
+                vscode.window.showErrorMessage("Error 124: " + err);
+                vscode.window.setStatusBarMessage("Error 125: " + err, 5000);
+                iRiteChannel.appendLine("Error 126: " + err);
+              }
+            );
+          },
+            err => {
               vscode.window.showErrorMessage(
-                reason + "\nMust have Workspace Open to compile!\n\n"
+                "Error 136: Invalid Workspace.  Please open folder/workspace and rebuild | "
               );
-              iRiteChannel.appendLine("Must have Workspace Open to Compile!");
+              iRiteChannel.appendLine(
+                "Error 137: Invalid Workspace.  Please open folder/workspace and rebuild"
+              );
               vscode.window.setStatusBarMessage(
-                reason + "\nMust have Workspace Open to compile!\n\n"
+                "Error 138: Invalid Workspace.  Please open folder/workspace and rebuild | ",
+                5000
               );
             }
           );
+
+
         } else {
           vscode.window.setStatusBarMessage("Error Saving Files SBMsg", 5000);
           vscode.window.showErrorMessage("Error Saving Files EM");
