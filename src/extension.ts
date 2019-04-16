@@ -66,7 +66,7 @@ export function activate(context: vscode.ExtensionContext) {
           var openTextDoc;
 
           openTextDoc = vscode.window.activeTextEditor.document;
-          iRiteChannel.appendLine("Open Document: " + openTextDoc.fileName);
+          iRiteChannel.appendLine("Open File: " + openTextDoc.fileName);
 
           iRiteChannel.show();
           vscode.window.showTextDocument(openTextDoc).then(srcEditor => {
