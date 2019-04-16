@@ -1,3 +1,5 @@
+
+'use strict';
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
@@ -5,6 +7,13 @@ import * as vscode from "vscode";
 import fs = require("fs");
 import path = require("path");
 import cp = require("child_process");
+// import { commands, Disposable, ExtensionContext, TextEditor, window } from 'vscode';
+// import { ActiveEditorTracker } from './activeEditorTracker';
+// import { TextEditorComparer } from './comparers';
+// import { WorkspaceState } from './constants';
+// import { Logger } from './logger';
+// import { ISavedEditor, SavedEditor } from './savedEditor';
+
 var opener = require("opener");
 var iRiteChannel = vscode.window.createOutputChannel("iRite Information");
 
@@ -64,6 +73,46 @@ export function activate(context: vscode.ExtensionContext) {
           iRiteChannel.appendLine("All Files Saved");
 
           var openTextDoc;
+
+          // async function save () {
+          //   try {
+          //     const editorTracker = new ActiveEditorTracker();
+
+          //     let active = window.activeTextEditor;
+          //     let editor = active;
+          //     const openEditors: TextEditor[] = [];
+          //     do {
+          //         if (editor != null) {
+          //             // If we didn't start with a valid editor, set one once we find it
+          //             if (active === undefined) {
+          //                 active = editor;
+          //             }
+
+          //             openEditors.push(editor);
+          //         }
+
+          //         editor = await editorTracker.awaitNext(500);
+          //         if (editor !== undefined && openEditors.some(_ => TextEditorComparer.equals(_, editor, { useId: true, usePosition: true }))) break;
+          //     } while ((active === undefined && editor === undefined) || !TextEditorComparer.equals(active, editor, { useId: true, usePosition: true }));
+
+          //       editorTracker.dispose();
+
+          //       const editors = openEditors
+          //           .filter(_ => _.document !== undefined)
+          //           .map(_ => {
+          //               return {
+          //                   uri: _.document.uri,
+          //                   viewColumn: _.viewColumnnp
+          //               } as ISavedEditor;
+          //           });
+
+          //       this.context.workspaceState.update(WorkspaceState.SavedDocuments, editors);
+          //   }
+          //   catch (ex) {
+          //       Logger.error(ex, 'DocumentManager.save');
+          //   }
+          // }
+
 
           openTextDoc = vscode.window.activeTextEditor.document;
           iRiteChannel.appendLine("Open File: " + openTextDoc.fileName);
