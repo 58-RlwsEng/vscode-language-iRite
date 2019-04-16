@@ -64,77 +64,59 @@ export function activate(context: vscode.ExtensionContext) {
           iRiteChannel.appendLine("All Files Saved");
 
           var openTextDoc;
-          openTextDoc = new Promise(function (resolve, reject) {
-                  resolve(vscode.window.activeTextEditor.document);
-                });
 
+          openTextDoc = vscode.window.activeTextEditor.document;
+          iRiteChannel.appendLine("Open Document: " + openTextDoc.fileName);
 
-          openTextDoc.then(srcFile => {
-            iRiteChannel.show();
-            vscode.window.showTextDocument(srcFile).then(srcEditor => {
-              checkEngineDefined().then(engineType => {
-                checkEnginePathDefined(engineType.toString()).then(engineParameters => {
-                  //got engine path and compiler from config, now init active window and push to iRiteProcessor
-                  //iRiteProcessor takes argument of desired .src file path
-                  let enginePath: string = vscode.workspace
-                    .getConfiguration("irite")
-                    .get("build.enginePath", "");
-                  let compilerPath: string = vscode.workspace
-                    .getConfiguration("irite")
-                    .get("build.compilerPath", "");
-                  let textEditor = vscode.window.activeTextEditor;
-                  iRiteChannel.appendLine("Building: " + textEditor.document.fileName);
+          iRiteChannel.show();
+          vscode.window.showTextDocument(openTextDoc).then(srcEditor => {
+            checkEngineDefined().then(engineType => {
+              checkEnginePathDefined(engineType.toString()).then(engineParameters => {
+                //got engine path and compiler from config, now init active window and push to iRiteProcessor
+                //iRiteProcessor takes argument of desired .src file path
+                let enginePath: string = vscode.workspace
+                  .getConfiguration("irite")
+                  .get("build.enginePath", "");
+                let compilerPath: string = vscode.workspace
+                  .getConfiguration("irite")
+                  .get("build.compilerPath", "");
+                let filepath = openTextDoc.fileName;
+                iRiteChannel.appendLine("Building: " + filepath);
 
-                  let filepath = textEditor.document.fileName;
-                  var path = enginePath;
+                var path = enginePath;
 
-                  cp.execFile(
-                    path,
-                    [filepath, compilerPath, "build"],
-                    function (error, data, stderr) {
-                      if (error != null) {
-                        iRiteChannel.appendLine("Compile Function ERROR: " + error + "  stderr:" + stderr + "|");
-                        console.log(error);
-                        console.log(stderr);
-                      }else{
-                        iRiteChannel.appendLine(data);
-                      }
+                cp.execFile(
+                  path,
+                  [filepath, compilerPath, "build"],
+                  function (error, data, stderr) {
+                    if (error != null) {
+                      iRiteChannel.appendLine("Compile Function ERROR: " + error + "  stderr:" + stderr + "|");
+                      console.log(error);
+                      console.log(stderr);
+                    }else{
+                      iRiteChannel.appendLine(data);
                     }
-                  );
-                })
-                  .catch(error => {
-                    vscode.window.setStatusBarMessage("Error 112: " + error, 5000)
-                    vscode.window.showErrorMessage("Open Folder to Build Properly");
-                    iRiteChannel.appendLine("Error 114:  checkEnginePathDefined: " + error);
-                  });
+                  }
+                );
               })
                 .catch(error => {
-                  vscode.window.showErrorMessage("Error 118: " + error);
-                  vscode.window.setStatusBarMessage("Error 119:  + checkEngineDefined: " + error, 5000);
-                  iRiteChannel.appendLine("Error 120: checkEngineDefined: " + error);
+                  vscode.window.setStatusBarMessage("Error 112: " + error, 5000)
+                  vscode.window.showErrorMessage("Open Folder to Build Properly");
+                  iRiteChannel.appendLine("Error 114:  checkEnginePathDefined: " + error);
                 });
-            },
-              err => {
-                vscode.window.showErrorMessage("Error 124: " + err);
-                vscode.window.setStatusBarMessage("Error 125: " + err, 5000);
-                iRiteChannel.appendLine("Error 126: " + err);
-              }
-            );
+            })
+              .catch(error => {
+                vscode.window.showErrorMessage("Error 118: " + error);
+                vscode.window.setStatusBarMessage("Error 119:  + checkEngineDefined: " + error, 5000);
+                iRiteChannel.appendLine("Error 120: checkEngineDefined: " + error);
+              });
           },
             err => {
-              vscode.window.showErrorMessage(
-                "Error 136: Invalid Workspace.  Please open folder/workspace and rebuild | "
-              );
-              iRiteChannel.appendLine(
-                "Error 137: Invalid Workspace.  Please open folder/workspace and rebuild"
-              );
-              vscode.window.setStatusBarMessage(
-                "Error 138: Invalid Workspace.  Please open folder/workspace and rebuild | ",
-                5000
-              );
+              vscode.window.showErrorMessage("Error 124: " + err);
+              vscode.window.setStatusBarMessage("Error 125: " + err, 5000);
+              iRiteChannel.appendLine("Error 126: " + err);
             }
           );
-
 
         } else {
           vscode.window.setStatusBarMessage("Error Saving Files SBMsg", 5000);
