@@ -5,5 +5,8 @@ issues/**
 **/*.map
 .gitignore
 tsconfig.json
-out/projects.json
+out/
+src/
+webpack.config.js
 npm-debug.log
+node_modules

@@ -1,11 +1,16 @@
 ChangeLog
 =========
 
+#### 2.5.3
+
+-   Added missing or incorrect snippet and autocomplete info.
+
 #### 2.5.2
 
 -   Update 1.33 to VSCode broke the extension. Can no longer compile the
     active window. No longer will try to search for .src just compile
-    first one.
+    first one. Will work like used to now.  MUST HAVE .src file ACTIVE to
+    compile.
 
 #### 2.5.1
 

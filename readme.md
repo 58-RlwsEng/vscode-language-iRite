@@ -38,6 +38,3 @@ Deployment
 
 -   Ensure the irite.settings.json file has been modified to your system
     specs and then click iRite: Deploy
-
-#### 2.5.1
-    * Fixed issue with multiple src files in the workspace.  If only 1 exists will automatically open and compile that one.  If there are mulitples it will attempt to compile the active window.  If it is not an .src file errors will occur like before.  

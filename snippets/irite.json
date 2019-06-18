@@ -1,7 +1,12 @@
 {
-  "Begin end": {"prefix": "begin", "body": ["begin\r", "\t$1\r", "end;\r"
-  ],
-  "description": "Begin end"
+  "Begin end": {
+    "prefix": "begin",
+    "body":  [
+      "begin\r",
+      "\t$1\r",
+      "end;\r"
+      ],
+    "description": "Begin end"
   },
 
   "SetMenuBarColor": {
@@ -13,126 +18,115 @@
   },
 
   "block comment": {
-  "prefix": "blockcomment",
-  "body": [
-    "----------------------------------------------------------------------------",
-    "--",
-    "--\t$1",
-    "--",
-    "----------------------------------------------------------------------------"
-  ],
-  "description": "Block Comment"
+    "prefix": "blockcomment",
+    "body": [
+      "----------------------------------------------------------------------------",
+      "--",
+      "--\t$1",
+      "--",
+      "----------------------------------------------------------------------------"
+    ],
+    "description": "Block Comment"
   },
 
   "IsValid": {
-  "prefix": "IsValid",
-  "body": [
-    "if isValid(${1:string_Number}, ${2:string_Type}, ${3:int_Length}) = true then",
-    "\t$4",
-    "end if;"
-  ],
-  "description": "IsValid"
+    "prefix": "IsValid",
+    "body": [
+      "if isValid(${1:string_Input}, ${2:string_ValidFor}, ${3:int_Length}) = true then",
+      "\t$4",
+      "end if;"
+    ],
+    "description": "RLWS iRite template. Checks if entered value is valid for (S)tring, (I)nteger, (R)eal or (P)ercentage"
+    },
+
+  "PromptForEntry": {
+    "prefix": "PromptForEntry",
+    "body": [
+      "PromptForEntry(${1:string_Prompt}, ${2:integer_EntryMode}, ${3:string_Default}, ${4:bit_prompt});"
+    ],
+    "description": "RLWS iRite template.  Prompts for user entry with passed in parameters"
   },
 
-"PromptForEntry": {
-  "prefix": "PromptForEntry",
-  "body": [
-    "PromptForEntry(${1:string_Prompt}, ${2:integer_EntryMode}, ${3:string_Default}, ${4:bit_prompt});"
-  ],
-  "description": "PromptForEntry"
-},
-
-"SetBargraphLevel": {
-  "prefix": "SetBargraphLevel",
-  "body": [
-    "SetBargraphLevel(${1:int_WidgetNum}, ${2:int_Percentage});"
-  ],
-  "description": "SetBargraphLevel"
-},
-
-"handler": {
-  "prefix": "handler",
-  "body": [
-    "handler ${1:HandlerName};",
-    "begin",
-    "\t$0",
-    "end;"
-  ],
-  "description": "handler"
+  "SetBargraphLevel": {
+    "prefix": "SetBargraphLevel",
+    "body": [
+      "SetBargraphLevel(${1:int_WidgetNum}, ${2:int_Percentage});"
+    ],
+    "description": "Sets referenced bargraph to given percentage"
   },
+
+  "handler": {
+    "prefix": "handler",
+    "body": [
+      "handler ${1:HandlerName};",
+      "begin",
+      "\t$0",
+      "end;"
+    ],
+    "description": "Handler template."
+    },
 
   "else end": {
-  "prefix": "else",
-  "body": [
-    "else",
-    "\t$0",
-    "end if;"
-  ],
-  "description": "else end"
-  },
-
-  "for loop": {
-  "prefix": "for",
-  "body": [
-    "for ${1:i} := ${2:1} to ${3:max}",
-    "loop",
-    "\t$0",
-    "end loop;"
-  ],
-  "description": "for loop"
+    "prefix": "else",
+    "body": [
+      "else",
+      "\t$0",
+      "end if;"
+    ],
+    "description": "else end"
   },
 
   "function end": {
-  "prefix": "function",
-  "body": [
-    "function ${1:MyFunction}(${2:params}:${3:integer};",
-    "begin",
-    "\t$0",
-    "end;"
-  ],
-  "description": "function end"
+    "prefix": "function",
+    "body": [
+      "function ${1:MyFunction}(${2:params}:${3:integer};",
+      "begin",
+      "\t$0",
+      "end;"
+    ],
+    "description": "function template with begin and end"
   },
 
   "if (no begin end)": {
-  "prefix": "if",
-  "body": [
-    "if ${1:True} then",
-    "\t$0"
-  ],
-  "description": "if (no begin end)"
+    "prefix": "if",
+    "body": [
+      "if ${1:True} then",
+      "\t$0"
+    ],
+    "description": "if (no begin end)"
   },
 
   "if end if": {
-  "prefix": "ifb",
-  "body": [
-    "if ${1:True} then",
-    "\t$0",
-    "end if;"
-  ],
-  "description": "if end"
+    "prefix": "if end if",
+    "body": [
+      "if ${1:True} then",
+      "\t$0",
+      "end if;"
+    ],
+    "description": "if statement with end if"
   },
 
   "if else (no begin end)": {
-  "prefix": "ife",
-  "body": [
-    "if ${1:True} then",
-    "\t${2:then code here}",
-    "else",
-    "\t${3:else code here}"
-  ],
-  "description": "if else (no begin end)"
+    "prefix": "if else",
+    "body": [
+      "if ${1:True} then",
+      "\t${2:then code here}",
+      "else",
+      "\t${3:else code here}"
+    ],
+    "description": "if else (no begin end)"
   },
 
-  "if else end": {
-  "prefix": "ifeb",
-  "body": [
-    "if ${1:True} then",
-    "\t${2:then code here}",
-    "else",
-    "\t${3:else code here}",
-    "end if;"
-  ],
-  "description": "if else end"
+  "if else end if": {
+    "prefix": "if else end if",
+    "body": [
+      "if ${1:True} then",
+      "\t${2:then code here}",
+      "else",
+      "\t${3:else code here}",
+      "end if;"
+    ],
+    "description": "if else end if"
   },
 
   "SelectScreen": {
@@ -140,180 +134,218 @@
     "body":[
       "SelectScreen(${1:int_ScreenNumber});"
     ],
-    "description": "SelectScreen"
+    "description": "Select Active Screen"
   },
 
   "EnableHandler": {
     "prefix": "EnableHandler",
     "body":[
-      "EnableHandler(${1:HandlerName});"
+      "EnableHandler(${1:string_HandlerName});"
     ],
-    "description": "EnableHandler"
+    "description": "Enable referenced handler"
   },
 
   "DisableHandler": {
     "prefix": "DisableHandler",
     "body":[
-      "DisableHandler(${1:HandlerName});"
+      "DisableHandler(${1:string_HandlerName});"
     ],
-    "description": "DisableHandler"
+    "description": "Disable referenced handler "
   },
 
   "procedure": {
-  "prefix": "procedure",
-  "body": [
-    "procedure ${1:MyProcedure};",
-    "begin",
-    "\t$0",
-    "end;"
-  ],
-  "description": "procedure"
+    "prefix": "procedure",
+    "body": [
+      "procedure ${1:MyProcedure};",
+      "begin",
+      "\t$0",
+      "end;"
+    ],
+    "description": "procedure template"
   },
 
   "FindFirst": {
     "prefix": "FindFirst",
     "body": [
-      "FindFirst(${1:database}_${2:field})"
+      "FindFirst(${1:db_Database}_${2:string_Field})"
     ],
-    "description": "FindFirst"
+    "description": "Finds the first record in the referenced database that matches the contents of <Database> column <field>."
+  },
+
+  "FindNext": {
+    "prefix": "FindNext",
+    "body": [
+      "FindFirst(${1:db_Database}_${2:string_Field})"
+    ],
+    "description": "Finds the next record in the referenced database that matches the contents of <Database> column <field>."
+  },
+
+  "FindLast": {
+    "prefix": "FindLast",
+    "body": [
+      "FindFirst(${1:db_Database}_${2:string_Field})"
+    ],
+    "description": "Finds the last record in the referenced database that matches the contents of <Database> column <field>."
   },
 
   "GetGross ": {
-  "prefix": "GetGross",
-  "body": [
-    "GetGross(${1:scaleNum}, ${2:Units}, ${3:GrossOut});"
-  ],
-  "description": "getgross"
+    "prefix": "GetGross",
+    "body": [
+      "GetGross(${1:int_ScaleNum}, ${2:units_Units}, ${3:VAR real_GrossWgt});"
+    ],
+    "description": "Assigns current gross weight in provide scale and units to the 3rd parameter"
   },
 
   "GetNet ": {
-  "prefix": "GetNet",
-  "body": [
-    "GetNet(${1:scaleNum}, ${2:Units}, ${3:NetOut});"
-  ],
-  "description": "getnet"
+    "prefix": "GetNet",
+    "body": [
+      "GetNet(${1:int_ScaleNum}, ${2:units_Units}, ${3:VAR real_NetWgt});"
+    ],
+    "description": "Assigns current net weight in provide scale and units to the 3rd parameter"
   },
+
   "GetTare ": {
-  "prefix": "GetTare",
-  "body": [
-    "GetTare(${1:scaleNum}, ${2:Units}, ${3:TareOut});"
-  ],
-  "description": "GetTare"
+    "prefix": "GetTare",
+    "body": [
+      "GetTare(${1:int_ScaleNum}, ${2:units_Units}, ${3:VAR real_TareWgt});"
+    ],
+    "description": "Assigns current tare weight in provide scale and units to the 3rd parameter"
   },
+
   "GetFilteredCount ": {
-  "prefix": "GetFilteredCount",
-  "body": [
-    "GetFilteredCount(${1:scaleNum}, ${2:FilteredCount});"
-  ],
-  "description": "GetFilteredCount"
+    "prefix": "GetFilteredCount",
+    "body": [
+      "GetFilteredCount(${1:int_ScaleNum}, ${2:VAR int_FilteredCount});"
+    ],
+    "description": "Sets FilteredCount to current filtered A/D count for scale ScaleNum"
   },
+
   "GetRawCount ": {
-  "prefix": "GetRawCount",
-  "body": [
-    "GetRawCount(${1:scaleNum}, ${2:RawCount});"
-  ],
-  "description": "getRawCount"
+    "prefix": "GetRawCount",
+    "body": [
+      "GetRawCount(${1:int_ScaleNum}, ${2:VAR int_RawCount});"
+    ],
+    "description": "Assigns raw A/D count for ScaleNum to RawCount"
   },
+
   "SetImageWidgetPath ": {
-  "prefix": "SetImageWidgetPath",
-  "body": [
-      "SetImageWidgetPath(${1:Widget_int}, ${2:fileName_string});"
-  ],
-  "description": "SetImageWidgetPath"
+    "prefix": "SetImageWidgetPath",
+    "body": [
+        "SetImageWidgetPath(${1:int_Widget}, ${2:string_fileName});"
+    ],
+    "description": "Displays image widget as a BMP or PNG file. File needs to be stored as on a micro SD card and stored in a folder called sdimages"
   },
 
   "DebugSerial": {
-     "prefix": "Debug",
-     "body": ["WriteLn(g_iDebug, \"${1:int_lineNumber 2:string_Message}\");"],
-     "description": "Debug Serial"
+    "prefix": "Debug",
+    "body": ["WriteLn(g_iDebug, \"${1:int_lineNumber} ${2:string_Message}\");"],
+    "description": "Debug Serial (requires adding cmd32 handler with code to actually produce debug)"
   },
 
   "DebugTCP": {
-     "prefix": "Debug",
-     "body": ["WriteOutLn(g_sDebug, \"${1:int_lineNumber 2:string_Message}\");"],
-     "description": "Debug TCP"
+    "prefix": "Debug",
+    "body": ["WriteOutLn(g_sDebug, \"${1:int_lineNumber} ${2:string_Message}\");"],
+    "description": "Debug TCP (requires adding handler with code to actually produce debug)"
 
   },
 
   "WriteLn": {
+    "prefix": "WriteLn",
+    "body": [
+    "WriteLn(${1:int_Port}, \"${2:string_message}\")"
 
-  "prefix": "WriteLn",
-  "body": [
-   "WriteLn(${1:int_Port}, \"${2:string_message}\")"
+      ],
 
-    ],
+    "description": "Write message out Port with CR/LF at the end"
+    },
 
-  "description": "WriteLn"
+  "Write": {
+    "prefix": "Write",
+    "body": [
+    "WriteLn(${1:int_Port}, \"${2:string_message}\")"
+
+      ],
+
+    "description": "Write message out Port without CR/LF at the end"
   },
 
   "WriteOutLn": {
-  "prefix": "WriteOutLn",
-  "body": [
-   "WriteOutLn(TCPC${1:int_Port}, \"${2:string_message}\");"
+    "prefix": "WriteOutLn",
+    "body": [
+      "WriteOutLn(TCPC${1:int_Port}, \"${2:string_message}\");"
 
-    ],
-  "description": "WriteOutLn"
+      ],
+    "description": "Write message out TCPC(Port) with CR/LF at the end "
+  },
+
+  "WriteOut": {
+    "prefix": "WriteOut",
+    "body": [
+      "WriteOutLn(TCPC${1:int_Port}, \"${2:string_message}\");"
+
+      ],
+    "description": "Write message out TCPC(Port) without CR/LF at the end "
   },
 
   "While Loop": {
     "prefix": "while",
     "body": [
-    "while ${string_condition}",
-    "loop",
-    "\t$0",
-    "end loop;"
-  ],
+      "while ${string_condition}",
+      "loop",
+      "\t$0",
+      "end loop;"
+    ],
     "description": "While Loop"
- },
+  },
 
- "Left$": {
+  "Left$": {
     "prefix": "Left$",
     "body": [
-    "Left$(${1:String_Name}, ${2:int_len})"
+      "Left$(${1:string_Source}, ${2:int_Len})"
     ],
-    "description": "Left$"
- },
+    "description": "Returns a string containing the leftmost 'Len' characters of string 'Source'. If 'Len' is greater than the length of 'Source', the function returns a copy of 'Source'."
+  },
 
   "SetLabelText": {
-     "prefix": "SetLabelText",
+    "prefix": "SetLabelText",
     "body": [
         "SetLabelText(${1:int_LabelID}, \"${2:string_Message}\");"
     ],
-  "description": "SetLabelText"
- },
+    "description": "Set the text of label widget 'LabelID' to 'Message'"
+  },
 
- "SetWidgetColor": {
-   "prefix": "SetWidgetColor",
-   "body": [
-      "SetWidgetColor(${1:int_WidgetID}, \"${2:string_Color}\");"
+  "SetWidgetColor": {
+    "prefix": "SetWidgetColor",
+    "body": [
+        "SetWidgetColor(${1:int_WidgetID}, \"${2:string_Color}\");"
+      ],
+    "description": "Sets the color of widget 'WidgetID' to 'Color'. A set widget color uses HTML RGB style."
+
+  },
+
+"SetBGColor": {
+  "prefix": "SetBGColor",
+  "body": [
+      "SetBGColor(${1:color_Background}, \"${2:color_Text}\");"
     ],
-  "description": "SetLabelText"
+  "description": "Sets the text and background color (name or HTML RGB Style)"
 
- },
+},
 
- "SetBGColor": {
-   "prefix": "SetBGColor",
-   "body": [
-      "SetBGColor(${1:color_BG}, \"${2:color_Text}\");"
-    ],
-  "description": "SetLabelText"
+"SetWidgetVisibility": {
+  "prefix": "SetWidgetVisibility",
+  "body": [
+    "SetWidgetVisibility(${1:int_WidgetID}, ${2:VonVoff_value};"
+  ],
+  "description": "Sets the visibility state of widget 'WidgetID' to 'Value' (vOn or Voff)."
+},
 
- },
-
- "SetWidgetVisibility": {
-   "prefix": "SetWidgetVisibility",
-   "body": [
-     "SetWidgetVisibility(${1:int_WidgetID}, ${2:VonVoff};"
-   ],
-   "description": "SetWidgetVisibility"
- },
-
- "EventWidget": {
+"EventWidget": {
   "prefix": "EventWidget",
   "body": [
     "EventWidget"
   ],
-  "description": "EventWidget"
+  "description": "System Variable that contains value of the widget number that triggered event (typically WidgetClicked)"
 },
 
 "EventKey": {
@@ -323,18 +355,30 @@
     ],
     "description": "EventKey"
   },
- "For Loop": {
-    "prefix": "for loop",
+
+  "For Loop": {
+    "prefix": "for loop simple",
     "body": [
       "for i := 1 to ${1:int_Count}",
       "loop",
       "\t$2",
       "end loop;"
     ],
-    "description": "For Loop"
- },
+    "description": "For Loop 1 to 'Count'"
+  },
 
- "IfElse": {
+  "for loop": {
+    "prefix": "for loop custom",
+    "body": [
+      "for ${1:i} := ${2:1} to ${3:max}",
+      "loop",
+      "\t$0",
+      "end loop;"
+    ],
+    "description": "for loop customize iterator, starting value and ending value"
+  },
+
+  "IfElse": {
     "prefix": "if else",
     "body": [
       "if ${1:string_command} then",
@@ -344,87 +388,384 @@
       "end if;"
     ],
     "description": "if else end if;"
- },
+  },
 
- "Separator Line": {
-   "prefix": "Dashed Line",
-   "body": [
-      "-------------------------------------------------------------------------------------"
-   ],
-   "description": "Dashes"
- },
+  "Separator Line": {
+    "prefix": "Dashed Line",
+    "body": [
+        "-------------------------------------------------------------------------------------"
+    ],
+    "description": "Dashes"
+  },
 
- "SetScaleSymbols": {
+  "SetScaleSymbols": {
     "prefix": "SetScaleSymbols",
     "body": [
       "SetScaleSymbols(${1:string_BlackWhite});"
     ],
-    "Description": "Sets the color of the scale symbols"
- },
+    "Description": "Sets the scale’s symbols to black or white"
+  },
 
+  "GetCapacity ": {
+    "prefix": "GetCapacity",
+    "body": [
+      "GetCapacity(${1:int_ScaleNum}, ${2:units_Units}, ${3:VAR real_ScaleCapacity});"
+    ],
+    "description": "Sets 'ScaleCapacity' to the configured capacity for scale 'ScaleNum' and units 'Units'."
+  },
 
+  "GetMV ": {
+    "prefix": "GetMV",
+    "body": ["GetMV(${1:int_ScaleNum}, ${2:VAR real_Millivolts});"],
+    "description": "Returns the 'Millivolts' reading for a scale."
+  },
 
-"GetCapacity ": {"prefix": "GetCapacity","body": ["GetCapacity(${1:scaleNum}, ${2:ScaleCapacity});"],"description": "getCapacity"},
-"GetMV ": {"prefix": "GetMV","body": ["GetMV(${1:scaleNum}, ${2:MV});"],"description": "GetMV"},
-"GetGrads ": {"prefix": "GetGrads","body": ["GetGrads(${1:scaleNum}, ${2:G});"],"description": "GetGrads"},
-"GetCountBy ": {"prefix": "GetCountBy","body": ["GetCountBy(${1:scaleNum}, ${2:Units}, ${3:C});"],"description": "GetCountBy"},
-"SetAlgOut ": {"prefix": "SetAlgOut","body": ["SetAlgOut(${1:scaleNum}, ${2:P});"],"description": "SetAlgOut"},
-"getLCCC ": {"prefix": "getLCCC","body": ["getLCCC(${1:scaleNum}, ${2:V});"],"description": "getLCCC"},
-"getLCCD ": {"prefix": "getLCCD","body": ["getLCCD(${1:scaleNum}, ${2:V});"],"description": "getLCCD"},
-"getLCCW ": {"prefix": "getLCCW","body": ["getLCCW(${1:scaleNum}, ${2:V});"],"description": "getLCCW"},
-"GetWVal ": {"prefix": "GetWVal","body": ["GetWVal(${1:scaleNum}, ${2:V});"],"description": "GetWVal"},
-"GetZeroCount ": {"prefix": "GetZeroCount","body": ["GetZeroCount(${1:scaleNum}, ${2:V});"],"description": "GetZeroCount"},
-"PulseCount ": {"prefix": "PulseCount","body": ["PulseCount(${1:scaleNum}, ${2:C});"],"description": "PulseCount"},
-"ClearPulseCount ": {"prefix": "ClearPulseCount","body": ["ClearPulseCount(${1:scaleNum};"],"description": "ClearPulseCount"},
-"AcquireTare ": {"prefix": "AcquireTare","body": ["AcquireTare(${1:scaleNum});"],"description": "AcquireTare"},
-"SetTare ": {"prefix": "SetTare","body": ["SetTare(${1:int_scaleNum}, ${2:unit_Units}, ${3:real_Weight});"],"description": "SetTare"},
-"GetTareType ": {"prefix": "GetTareType","body": ["GetTareType(${1:scaleNum}, ${2:TareType});"],"description": "GetTareType"},
-"ClearTare ": {"prefix": "ClearTare","body": ["ClearTare(${1:scaleNum});"],"description": "ClearTare"},
-"GetROC ": {"prefix": "GetROC","body": ["GetROC(${1:int_scaleNum}, ${2:real_ROC});"],"description": "GetROC"},
-"GetAccum ": {"prefix": "GetAccum","body": ["GetAccum(${1:int_scaleNum}, ${2:unit_Units}, ${3:real_Weight});"],"description": "GetAccum"},
-"SetAccum ": {"prefix": "SetAccum","body": ["SetAccum(${1:int_scaleNum}, ${2:unit_Units}, ${3:real_Weight});"],"description": "SetAccum"},
-"GetAvgAccum ": {"prefix": "GetAvgAccum","body": ["GetAvgAccum(${1:scaleNum}, ${2:Units}, ${3:real_Weight});"],"description": "GetAvgAccum"},
-"GetAccumCount ": {"prefix": "GetAccumCount","body": ["GetAccumCount(${1:scaleNum}, ${2:int_Count});"],"description": "GetAccumCount"},
-"GetAccumDate ": {"prefix": "GetAccumDate","body": ["GetAccumDate(${1:scaleNum}, ${2:D});"],"description": "GetAccumDate"},
-"GetAccumTime ": {"prefix": "GetAccumTime","body": ["GetAccumTime(${1:scaleNum}, ${2:V});"],"description": "GetAccumTime"},
-"ClearAccum ": {"prefix": "ClearAccum","body": ["ClearAccum(${1:scaleNum});"],"description": "ClearAccum"},
-"SelectScale ": {"prefix": "SelectScale","body": ["SelectScale(${1:scaleNum});"],"description": "SelectScale"},
-"GetMode ": {"prefix": "GetMode","body": ["GetMode(${1:scaleNum}, ${2:M});"],"description": "GetMode"},
-"GetUnits ": {"prefix": "GetUnits","body": ["GetUnits(${1:scaleNum}, ${2:Units});"],"description": "GetUnits"},
-"GetUnitsString ": {"prefix": "GetUnitsString","body": ["GetUnitsString(${1:scaleNum}, ${2:Units}, ${3:V});"],"description": "GetUnitsString"},
-"InCOZ ": {"prefix": "InCOZ","body": ["InCOZ(${1:scaleNum}, ${2:V});"],"description": "InCOZ"},
-"InRange ": {"prefix": "InRange","body": ["InRange(${1:scaleNum}, ${2:V});"],"description": "InRange"},
-"InMotion ": {"prefix": "InMotion","body": ["InMotion(${1:scaleNum}, ${2:V});"],"description": "InMotion"},
-"SetMode ": {"prefix": "SetMode","body": ["SetMode(${1:scaleNum}, ${2:Mode});"],"description": "SetMode"},
-"SetUnits ": {"prefix": "SetUnits","body": ["SetUnits(${1:scaleNum}, ${2:Units});"],"description": "SetUnits"},
-"ZeroScale ": {"prefix": "ZeroScale","body": ["ZeroScale(${1:scaleNum});"],"description": "ZeroScale"},
-"GetSPValue ": {"prefix": "GetSPValue","body": ["GetSPValue(${1:SPint}, ${2:V});"],"description": "GetSPValue"},
-"GetSPBand ": {"prefix": "GetSPBand","body": ["GetSPBand(${1:SPint}, ${2:V});"],"description": "GetSPBand"},
-"GetSPPreact ": {"prefix": "GetSPPreact","body": ["GetSPPreact(${1:SPint}, ${2:V});"],"description": "GetSPPreact"},
-"GetSPHyster ": {"prefix": "GetSPHyster","body": ["GetSPHyster(${1:SPint}, ${2:V});"],"description": "GetSPHyster"},
-"GetSPTime ": {"prefix": "GetSPTime","body": ["GetSPTime(${1:SPint}, ${2:V});"],"description": "GetSPTime"},
-"GetSPDuration ": {"prefix": "GetSPDuration","body": ["GetSPDuration(${1:SPint}, ${2:V});"],"description": "GetSPDuration"},
-"GetSPCaptured ": {"prefix": "GetSPCaptured","body": ["GetSPCaptured(${1:SPint}, ${2:V});"],"description": "GetSPCaptured"},
-"GetSPCount ": {"prefix": "GetSPCount","body": ["GetSPCount(${1:SPint}, ${2:V});"],"description": "GetSPCount"},
-"GetSPPreCount ": {"prefix": "GetSPPreCount","body": ["GetSPPreCount(${1:SPint}, ${2:V});"],"description": "GetSPPreCount"},
-"SetSPValue ": {"prefix": "SetSPValue","body": ["SetSPValue(${1:SPint}, ${2:V});"],"description": "SetSPValue"},
-"SetSPBand ": {"prefix": "SetSPBand","body": ["SetSPBand(${1:SPint}, ${2:V});"],"description": "SetSPBand"},
-"SetSPPreact ": {"prefix": "SetSPPreact","body": ["SetSPPreact(${1:SPint}, ${2:V});"],"description": "SetSPPreact"},
-"SetSPHyster ": {"prefix": "SetSPHyster","body": ["SetSPHyster(${1:SPint}, ${2:V});"],"description": "SetSPHyster"},
-"SetSPTime ": {"prefix": "SetSPTime","body": ["SetSPTime(${1:SPint}, ${2:V});"],"description": "SetSPTime"},
-"SetSPDuration ": {"prefix": "SetSPDuration","body": ["SetSPDuration(${1:SPint}, ${2:V});"],"description": "SetSPDuration"},
-"SetSPCaptured ": {"prefix": "SetSPCaptured","body": ["SetSPCaptured(${1:SPint}, ${2:V});"],"description": "SetSPCaptured"},
-"SetSPCount ": {"prefix": "SetSPCount","body": ["SetSPCount(${1:SPint}, ${2:V});"],"description": "SetSPCount"},
-"SetSPPreCount ": {"prefix": "SetSPPreCount","body": ["SetSPPreCount(${1:SPint}, ${2:V});"],"description": "SetSPPreCount"},
-"DisableSP ": {"prefix": "DisableSP","body": ["DisableSP(${1:SPint});"],"description": "DisableSP"},
-"EnableSP ": {"prefix": "EnableSP","body": ["EnableSP(${1:SPint});"],"description": "EnableSP"},
-"SetBatchingMode ": {"prefix": "SetBatchingMode","body": ["SetBatchingMode(${1:BatchingMode});"],"description": "SetBatchingMode"},
-"GetBatchingMode ": {"prefix": "GetBatchingMode","body": ["GetBatchingMode(${1:BatchStatus});"],"description": "GetBatchingMode"},
-"GetCurrentSP ": {"prefix": "GetCurrentSP","body": ["GetCurrentSP(${1:SPint});"],"description": "GetCurrentSP"},
-"StartStreaming ": {"prefix": "StartStreaming","body": ["StartStreaming(${1:P_int});"],"description": "StartStreaming"},
-"StopStreaming ": {"prefix": "StopStreaming","body": ["StopStreaming(${1:SPint});"],"description": "StopStreaming"},
-"Print ": {"prefix": "Print","body": ["Print(${1:PrintFormat});"],"description": "Print"},
-"SetPrintText ": {"prefix": "SetPrintText","body": ["SetPrintText(${1:fmt_num}, ${2:text_string});"],"description": "SetPrintText"},
+  "GetGrads ": {
+    "prefix": "GetGrads",
+    "body": ["GetGrads(${1:int_ScaleNum}, ${2:VAR int_Grads});"],
+    "description": "Sets 'Grads' to the configured grad value of scale 'ScaleNum'."
+  },
+
+  "GetCountBy ": {
+    "prefix": "GetCountBy",
+    "body": ["GetCountBy(${1:int_ScaleNum}, ${2:units_Units}, ${3:VAR real_CountBy});"],
+    "description": "Sets 'CountBy' to the real count-by value on scale 'ScaleNum', in units 'Units'."
+  },
+
+  "SetAlgOut ": {
+    "prefix": "SetAlgOut",
+    "body": ["SetAlgOut(${1:int_SlotNum}, ${2:real_Pct});"],
+    "description": "Sets the analog output card in slot 'SlotNum' to the percentage 'Pct'. Negative 'Pct' values are set to zero; values greater than 100.0 are set to 100.0"
+  },
+
+  "getLCCC ": {
+    "prefix": "getLCCC",
+    "body": ["getLCCC(${1:int_ScaleNum}, ${2:VAR int_LCCC});"],
+    "description": "Sets 'LCCC' to the calibrated load cell count at capacity for scale 'ScaleNum'"
+  },
+
+  "getLCCD ": {
+    "prefix": "getLCCD",
+    "body": ["getLCCD(${1:int_ScaleNum}, ${2:VAR int_LCCD});"],
+    "description": "Sets 'LCCD' to the calibrated deadload count for scale 'ScaleNum'"
+  },
+
+  "getLCCW ": {
+    "prefix": "getLCCW",
+    "body": ["getLCCW(${1:int_ScaleNum}, ${2:VAR int_SpanCount});"],
+    "description": "Sets 'SpanCount' to the calibrated span count for scale 'ScaleNum'."
+  },
+
+  "GetWVal ": {
+    "prefix": "GetWVal",
+    "body": ["GetWVal(${1:int_ScaleNum}, ${2:VAR TestWeightValue});"],
+    "description": "Sets 'TestWeightValue' to the configured WVAL (test weight value) for scale 'ScaleNum'."
+  },
+
+  "GetZeroCount ": {
+    "prefix": "GetZeroCount",
+    "body": ["GetZeroCount(${1:int_ScaleNum}, ${2:VAR int_ZeroCount});"],
+    "description": "Sets 'ZeroCount' to the acquired zero count for scale 'ScaleNum'"
+  },
+
+  "PulseCount ": {
+    "prefix": "PulseCount",
+    "body": ["PulseCount(${1:int_SlotNum}, ${2:VAR int_Count});"],
+    "description": "Sets 'Count' to the current pulse count of the pulse input card in slot 'SlotNum'."
+  },
+
+  "ClearPulseCount ": {
+    "prefix": "ClearPulseCount",
+    "body": ["ClearPulseCount(${1:int_ScaleNum};"],
+    "description": "Sets the pulse count of the pulse input card in slot 'SlotNum' to zero"
+  },
+
+  "AcquireTare ": {
+    "prefix": "AcquireTare",
+    "body": ["AcquireTare(${1:int_ScaleNum});"],
+    "description": "Acquires a pushbutton tare from scale 'ScaleNum'"
+  },
+
+  "SetTare ": {
+    "prefix": "SetTare",
+    "body": ["SetTare(${1:int_ScaleNum}, ${2:unit_Units}, ${3:real_TareWeight});"],
+    "description": "Sets the tare weight for 'ScaleNum' to 'TareWeight' in 'Units'"
+  },
+
+  "GetTareType ": {
+    "prefix": "GetTareType",
+    "body": ["GetTareType(${1:int_ScaleNum}, ${2:TareType_TT});"],
+    "description": "Sets 'TT' to indicate type of tare currently on scale 'ScaleNum'"
+  },
+
+  "ClearTare ": {
+    "prefix": "ClearTare",
+    "body": ["ClearTare(${1:int_ScaleNum});"],
+    "description": "Removes the tare associated with scale 'ScaleNum' and sets the tare type associated with the scale to NoTare."
+  },
+
+  "GetROC ": {
+    "prefix": "GetROC",
+    "body": ["GetROC(${1:int_ScaleNum}, ${2:real_ROC});"],
+    "description": "Sets 'ROC' to the current rate-of-change value of scale 'ScaleNum'"
+  },
+
+  "GetAccum ": {
+    "prefix": "GetAccum",
+    "body": ["GetAccum(${1:int_ScaleNum}, ${2:unit_Units}, ${3:real_AccumWeight});"],
+    "description": "Sets 'AccumWeight' to the value of the accumulator associated with scale 'ScaleNum', in the units specified by 'Units'."
+  },
+
+  "SetAccum ": {
+    "prefix": "SetAccum",
+    "body": ["SetAccum(${1:int_ScaleNum}, ${2:unit_Units}, ${3:real_AccumWeight});"],
+    "description": "Sets the value of the accumulator associated with scale 'ScaleNum' to weight 'AccumWeight', in units specified by 'Units'."
+  },
+
+  "GetAvgAccum ": {
+    "prefix": "GetAvgAccum",
+    "body": ["GetAvgAccum(${1:int_ScaleNum}, ${2:units_Units}, ${3:real_AvgAccumWeight});"],
+    "description": "Sets 'AvgAccumWeight' to the average accumulator value associated with scale 'ScaleNum', in the units specified by 'Units', since the accumulator was last cleared."
+  },
+
+  "GetAccumCount ": {
+    "prefix": "GetAccumCount",
+    "body": ["GetAccumCount(${1:int_ScaleNum}, ${2:int_AccumCount});"],
+    "description": "Sets 'AccumCount' to the number of accumulations performed for scale 'ScaleNum' since its accumulator was last cleared"
+  },
+
+  "GetAccumDate ": {
+    "prefix": "GetAccumDate",
+    "body": ["GetAccumDate(${1:int_ScaleNum}, ${2:VAR string_Date});"],
+    "description": "Sets 'Date' to the date of the most recent accumulation performed by scale 'ScaleNum'."
+  },
+
+  "GetAccumTime ": {
+    "prefix": "GetAccumTime",
+    "body": ["GetAccumTime(${1:int_ScaleNum}, ${2:VAR string_Time});"],
+    "description": "Sets 'Time' to the time of the most recent accumulation performed by scale 'ScaleNum'"
+  },
+
+  "ClearAccum ": {
+    "prefix": "ClearAccum",
+    "body": ["ClearAccum(${1:int_ScaleNum});"],
+    "description": "Sets the value of the accumulator for scale 'ScaleNum' to zero."
+  },
+
+  "SelectScale ": {
+    "prefix": "SelectScale",
+    "body": ["SelectScale(${1:int_ScaleNum});"],
+    "description": "Sets scale 'ScaleNum' as the current, active scale."
+  },
+
+  "GetMode ": {
+    "prefix": "GetMode",
+    "body": ["GetMode(${1:int_ScaleNum}, ${2:VAR mode_Mode});"],
+    "description": "Sets 'Mode' to the value representing the current display mode for scale 'ScaleNum'"
+  },
+
+  "GetUnits ": {
+    "prefix": "GetUnits",
+    "body": ["GetUnits(${1:int_ScaleNum}, ${2:VAR units_Units});"],
+    "description": "Sets 'Units' to the value representing the current display units for scale 'ScaleNum'."
+  },
+
+  "GetUnitsString ": {
+    "prefix": "GetUnitsString",
+    "body": ["GetUnitsString(${1:int_ScaleNum}, ${2:units_Units}, ${3:VAR string_UnitsString});"],
+    "description": "Sets 'UnitsString' to the text string representing the current display units for scale 'ScaleNum'."
+  },
+
+  "InCOZ ": {
+    "prefix": "InCOZ",
+    "body": ["InCOZ(${1:int_ScaleNum}, ${2:VAR int_InCoz});"],
+    "description": "Sets 'InCoz' to a non-zero value if scale 'ScaleNum' is within 0.25 grads of gross zero. If the condition is not met, 'InCoz' is set to zero."
+  },
+
+  "InRange ": {
+    "prefix": "InRange",
+    "body": ["InRange(${1:int_ScaleNum}, ${2:VAR int_InRange});"],
+    "description": "Sets 'InRange' to zero value if scale 'ScaleNum' is in an overload or underload condition. Otherwise, 'InRange' is set to a non-zero value."
+  },
+
+  "InMotion ": {
+    "prefix": "InMotion",
+    "body": ["InMotion(${1:scaleNum}, ${2:V});"],
+    "description": "Sets 'InMotion' to a non-zero value if scale 'ScaleNum' is in motion. Otherwise, 'InMotion' is set to zero."
+  },
+
+  "SetMode ": {
+    "prefix": "SetMode",
+    "body": ["SetMode(${1:int_ScaleNum}, ${2:mode_Mode});"],
+    "description": "Sets the current display mode on scale 'ScaleNum' to 'Mode'."
+  },
+
+  "SetUnits ": {
+    "prefix": "SetUnits",
+    "body": ["SetUnits(${1:int_ScaleNum}, ${2:units_Units});"],
+    "description": "Sets the current display units on scale 'ScaleNum' to 'Units'."
+  },
+
+  "ZeroScale ": {
+    "prefix": "ZeroScale",
+    "body": ["ZeroScale(${1:int_ScaleNum});"],
+    "description": "Performs a gross zero scale operation for 'ScaleNum'."
+  },
+
+  "GetSPValue ": {
+    "prefix": "GetSPValue",
+    "body": ["GetSPValue(${1:int_SPNum}, ${2:VAR real_SPValue});"],
+    "description": "Sets 'SPValue' to the current value (VALUE parameter) of the setpoint 'SPNum'"
+  },
+
+  "GetSPBand ": {
+    "prefix": "GetSPBand",
+    "body": ["GetSPBand(${1:int_SPNum}, ${2:VAR real_SPBand});"],
+    "description": "Sets 'SPBand' to the current band value (BANDVAL parameter) of the setpoint 'SPNum'."
+  },
+
+  "GetSPPreact ": {
+    "prefix": "GetSPPreact",
+    "body": ["GetSPPreact(${1:int_SPNum}, ${2:VAR real_SPPreact});"],
+    "description": "Sets 'SPPreact' to the current preact value (PREACT parameter) of the setpoint 'SPNum'."
+  },
+
+  "GetSPHyster ": {
+    "prefix": "GetSPHyster",
+    "body": ["GetSPHyster(${1:int_SPNum}, ${2:VAR real_SPHyper});"],
+    "description": "Sets 'SPHyper' to the current hysteresis value (HYSTER parameter) of the setpoint 'SPNum'."
+  },
+
+  "GetSPTime ": {
+    "prefix": "GetSPTime",
+    "body": ["GetSPTime(${1:int_SPNum}, ${2:VAR DateTime_DT});"],
+    "description": "For time of day (TOD) setpoints, sets 'DT' to the current trip time (TIME parameter) of the setpoint 'SPNum'"
+  },
+
+  "GetSPDuration ": {
+    "prefix": "GetSPDuration",
+    "body": ["GetSPDuration(${1:int_SPNum}, ${2:VAR DateTime_DT});"],
+    "description": "For time of day (TOD) setpoints, sets 'DT' to the current trip duration (DURATION parameter) of setpoint 'SPNum'"
+  },
+
+  "GetSPCaptured ": {
+    "prefix": "GetSPCaptured",
+    "body": ["GetSPCaptured(${1:int_SPNum}, ${2:VAR real_SPCapture});"],
+    "description": "Sets 'SPCapture' to the weight value that satisfied the setpoint 'SPNum'."
+  },
+
+  "GetSPCount ": {
+    "prefix": "GetSPCount",
+    "body": ["GetSPCount(${1:int_SPNum}, ${2:VAR int_SPCount});"],
+    "description": "For DINCNT setpoints, sets 'SPCount' to the value specified for setpoint 'SPNum'."
+  },
+
+  "GetSPPreCount ": {
+    "prefix": "GetSPPreCount",
+    "body": ["GetSPPreCount(${1:int_SPNum}, ${2:VAR int_PreCount});"],
+    "description": "Sets 'PreCount' to the preact count value (PCOUNT parameter) of DINCNT type setpoint 'SPNum'."
+  },
+
+  "SetSPValue ": {
+    "prefix": "SetSPValue",
+    "body": ["SetSPValue(${1:int_SPNum}, ${2:real_SPValue});"],
+    "description": "Sets the value (VALUE parameter) of setpoint 'SPNum' to the value specified by 'SPValue'."
+  },
+
+  "SetSPBand ": {
+    "prefix": "SetSPBand",
+    "body": ["SetSPBand(${1:int_SPNum}, ${2:real_SPBand});"],
+    "description": "Sets the band value (BANDVAL parameter) of setpoint 'SPNum' to the value specified by 'SPBand'."
+  },
+
+  "SetSPPreact ": {
+    "prefix": "SetSPPreact",
+    "body": ["SetSPPreact(${1:int_SPNum}, ${2:real_SPPreact});"],
+    "description": "Sets the preact value (PREACT parameter) of setpoint 'SPNum' to the value specified by 'SPPreact'."
+  },
+
+  "SetSPHyster ": {
+    "prefix": "SetSPHyster",
+    "body": ["SetSPHyster(${1:int_SPNum}, ${2:real_SPHyster});"],
+    "description": "Sets the hysteresis value (HYSTER parameter) of setpoint 'SPNum' to the value specified by 'SPHyster'."
+  },
+
+  "SetSPTime ": {
+    "prefix": "SetSPTime",
+    "body": ["SetSPTime(${1:int_SPNum}, ${2:DateTime_DT});"],
+    "description": "For time of day (TOD) setpoints, sets the trip time (TIME parameter) of setpoint 'SPNum' to the value specified by 'DT'."
+  },
+
+  "SetSPDuration ": {
+    "prefix": "SetSPDuration",
+    "body": ["SetSPDuration(${1:int_SPNum}, ${2:DateTime_DT});"],
+    "description": "For time of day (TOD) setpoints, sets the trip duration (DURATION parameter) of setpoint SP to the value specified by DT"
+  },
+
+  "SetSPCount ": {
+    "prefix": "SetSPCount",
+    "body": ["SetSPCount(${1:int_SPNum}, ${2:int_SPCount});"],
+    "description": "For DINCNT setpoints, sets the VALUE parameter of setpoint 'SPNum' to the value specified by 'SPCount'."
+  },
+  "SetSPPreCount ": {
+    "prefix": "SetSPPreCount",
+    "body": ["SetSPPreCount(${1:int_SPNum}, ${2:int_PreCount});"],
+    "description": "Sets the preact count value (PCOUNT parameter) of setpoint 'SPNum' to the value specified by 'PreCount'."
+  },
+
+  "DisableSP ": {
+    "prefix": "DisableSP",
+    "body": ["DisableSP(${1:int_SPNum});"],
+    "description": "Disables operation of setpoint 'SPNum'"
+  },
+
+  "EnableSP ": {
+    "prefix": "EnableSP",
+    "body": ["EnableSP(${1:int_SPNum});"],
+    "description": "Enables operation of setpoint 'SPNum'"
+  },
+
+  "SetBatchingMode ": {
+    "prefix": "SetBatchingMode",
+    "body": ["SetBatchingMode(${1:BatchingMode_BatchMode});"],
+    "description": "Sets the batching mode (BATCHNG parameter) to the value specified by 'BatchMode'."
+  },
+
+  "GetBatchingMode ": {
+    "prefix": "GetBatchingMode",
+    "body": ["GetBatchingMode;"],
+    "description": "Returns the current batching mode (BATCHNG parameter)."
+  },
+
+  "GetCurrentSP ": {
+    "prefix": "GetCurrentSP",
+    "body": ["GetCurrentSP(${1:VAR int_SPNum});"],
+    "description": "Sets 'SPNum' to the number of the current batch setpoint."
+  },
+
+  "StartStreaming ": {
+    "prefix": "StartStreaming",
+    "body": ["StartStreaming(${1:int_Port});"],
+    "description": "Starts data streaming for the port number specified by 'Port'. Streaming must be enabled for the port in the indicator configuration."
+  },
+
+  "StopStreaming ": {
+    "prefix": "StopStreaming",
+    "body": ["StopStreaming(${1:int_Port});"],
+    "description": "Stops data streaming for the port number specified by 'Port'."
+  },
+
+  "Print ": {
+    "prefix": "Print",
+    "body": ["Print(${1:PrintFormat_PrntFmt});"],
+    "description": "Requests a print operation using the print format specified by 'PrntFmt'. Output is sent to the port specified in the print format configuration."
+  },
+
+  "SetPrintText ": {
+    "prefix": "SetPrintText",
+    "body": ["SetPrintText(${1:fmt_num}, ${2:text_string});"],
+    "description": "Sets the value of the user-specified format (1-99) to the text specified. The text can be any string of up to 16 characters; if a string of more than 16 characters is specified, nothing is printed"
+  },
 "ProgramDelay ": {"prefix": "ProgramDelay", "body": ["ProgramDelay(${1:int_Time});"], "description": "ProgramDelay"},
 "GetDigIn ": {"prefix": "GetDigIn","body": ["GetDigIn(${1:Slot_Int}, ${2:D_int}, ${3:V_int});"],"description": "GetDigIn"},
 "GetDigOut ": {"prefix": "GetDigOut","body": ["GetDigOut(${1:Slot_Int}, ${2:D_int}, ${3:V_int});"],"description": "GetDigOut"},
