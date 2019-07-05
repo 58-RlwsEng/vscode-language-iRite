@@ -10,7 +10,7 @@
 		"declaration": true
 	},
 	"exclude": [
-		"node_modules",
-		"out/src"
+		"./node_modules",
+		"./out/src"
 	]
 }

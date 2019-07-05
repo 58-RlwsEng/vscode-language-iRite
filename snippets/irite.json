@@ -29,24 +29,6 @@
     "description": "Block Comment"
   },
 
-  "IsValid": {
-    "prefix": "IsValid",
-    "body": [
-      "if isValid(${1:string_Input}, ${2:string_ValidFor}, ${3:int_Length}) = true then",
-      "\t$4",
-      "end if;"
-    ],
-    "description": "RLWS iRite template. Checks if entered value is valid for (S)tring, (I)nteger, (R)eal or (P)ercentage"
-    },
-
-  "PromptForEntry": {
-    "prefix": "PromptForEntry",
-    "body": [
-      "PromptForEntry(${1:string_Prompt}, ${2:integer_EntryMode}, ${3:string_Default}, ${4:bit_prompt});"
-    ],
-    "description": "RLWS iRite template.  Prompts for user entry with passed in parameters"
-  },
-
   "SetBargraphLevel": {
     "prefix": "SetBargraphLevel",
     "body": [
@@ -238,13 +220,13 @@
 
   "DebugSerial": {
     "prefix": "Debug",
-    "body": ["WriteLn(g_iDebug, \"${1:int_lineNumber} ${2:string_Message}\");"],
+    "body": ["WriteLn(g_iDebug, ${1:int_lineNumber} ${2:string_Message});"],
     "description": "Debug Serial (requires adding cmd32 handler with code to actually produce debug)"
   },
 
   "DebugTCP": {
     "prefix": "Debug",
-    "body": ["WriteOutLn(g_sDebug, \"${1:int_lineNumber} ${2:string_Message}\");"],
+    "body": ["WriteOutLn(g_sDebug, ${1:int_lineNumber} ${2:string_Message});"],
     "description": "Debug TCP (requires adding handler with code to actually produce debug)"
 
   },
@@ -252,7 +234,7 @@
   "WriteLn": {
     "prefix": "WriteLn",
     "body": [
-    "WriteLn(${1:int_Port}, \"${2:string_message}\")"
+    "WriteLn(${1:int_Port}, ${2:string_message})"
 
       ],
 
@@ -262,7 +244,7 @@
   "Write": {
     "prefix": "Write",
     "body": [
-    "WriteLn(${1:int_Port}, \"${2:string_message}\")"
+    "WriteLn(${1:int_Port}, ${2:string_message})"
 
       ],
 
@@ -272,7 +254,7 @@
   "WriteOutLn": {
     "prefix": "WriteOutLn",
     "body": [
-      "WriteOutLn(TCPC${1:int_Port}, \"${2:string_message}\");"
+      "WriteOutLn(TCPC${1:int_Port}, ${2:string_message});"
 
       ],
     "description": "Write message out TCPC(Port) with CR/LF at the end "
@@ -281,7 +263,7 @@
   "WriteOut": {
     "prefix": "WriteOut",
     "body": [
-      "WriteOutLn(TCPC${1:int_Port}, \"${2:string_message}\");"
+      "WriteOutLn(TCPC${1:int_Port}, ${2:string_message});"
 
       ],
     "description": "Write message out TCPC(Port) without CR/LF at the end "
@@ -309,7 +291,7 @@
   "SetLabelText": {
     "prefix": "SetLabelText",
     "body": [
-        "SetLabelText(${1:int_LabelID}, \"${2:string_Message}\");"
+        "SetLabelText(${1:int_LabelID}, ${2:string_Message});"
     ],
     "description": "Set the text of label widget 'LabelID' to 'Message'"
   },
@@ -317,7 +299,7 @@
   "SetWidgetColor": {
     "prefix": "SetWidgetColor",
     "body": [
-        "SetWidgetColor(${1:int_WidgetID}, \"${2:string_Color}\");"
+        "SetWidgetColor(${1:int_WidgetID}, ${2:string_Color});"
       ],
     "description": "Sets the color of widget 'WidgetID' to 'Color'. A set widget color uses HTML RGB style."
 
@@ -326,7 +308,7 @@
 "SetBGColor": {
   "prefix": "SetBGColor",
   "body": [
-      "SetBGColor(${1:color_Background}, \"${2:color_Text}\");"
+      "SetBGColor(${1:color_Background}, ${2:color_Text});"
     ],
   "description": "Sets the text and background color (name or HTML RGB Style)"
 
@@ -404,6 +386,12 @@
       "SetScaleSymbols(${1:string_BlackWhite});"
     ],
     "Description": "Sets the scale’s symbols to black or white"
+  },
+
+  "SetSymbolState ": {
+    "prefix": "SetSymbolState",
+    "body":["SetSymbolState(${1:int_widgetNum}, ${2:int_state});"],
+    "description": "Sets the state of symbol widget 'widgetNum' to 'state'.  The widget state determines the variant of the widget symbol displayed."
   },
 
   "GetCapacity ": {
@@ -763,79 +751,462 @@
 
   "SetPrintText ": {
     "prefix": "SetPrintText",
-    "body": ["SetPrintText(${1:fmt_num}, ${2:text_string});"],
+    "body": ["SetPrintText(${1:int_fmtNum}, ${2:string_Text});"],
     "description": "Sets the value of the user-specified format (1-99) to the text specified. The text can be any string of up to 16 characters; if a string of more than 16 characters is specified, nothing is printed"
   },
-"ProgramDelay ": {"prefix": "ProgramDelay", "body": ["ProgramDelay(${1:int_Time});"], "description": "ProgramDelay"},
-"GetDigIn ": {"prefix": "GetDigIn","body": ["GetDigIn(${1:Slot_Int}, ${2:D_int}, ${3:V_int});"],"description": "GetDigIn"},
-"GetDigOut ": {"prefix": "GetDigOut","body": ["GetDigOut(${1:Slot_Int}, ${2:D_int}, ${3:V_int});"],"description": "GetDigOut"},
-"SetDigOut ": {"prefix": "SetDigOut","body": ["SetDigOut(${1:Slot_Int}, ${2:D_int}, ${3:V_int});"],"description": "SetDigOut"},
-"Abs ": {"prefix": "Abs","body": ["Abs(${1:X_real});"],"description": "Abs"},
-"Asc ": {"prefix": "Asc","body": ["Asc(${1:S_String});"],"description": "Asc"},
-"Atan ": {"prefix": "Atan","body": ["Atan(${1:X_real});"],"description": "Atan"},
-"BitAnd ": {"prefix": "BitAnd","body": ["BitAnd(${1:X_int}, ${2:Y_int});"],"description": "BitAnd"},
-"BitOr ": {"prefix": "BitOr","body": ["BitOr(${1:X_int}, ${2:Y_int});"],"description": "BitOr"},
-"BitNot ": {"prefix": "BitNot","body": ["BitNot(${1:X_int}, ${2:Y_int});"],"description": "BitNot"},
-"BitXor ": {"prefix": "BitXor","body": ["BitXor(${1:X_int}, ${2:Y_int});"],"description": "BitXor"},
-"Ceil ": {"prefix": "Ceil","body": ["Ceil(${1:X_real});"],"description": "Ceil"},
-"Chr$ ": {"prefix": "Chr$","body": ["Chr$(${1:i_int})"],"description": "Chr$"},
-"Cos ": {"prefix": "Cos","body": ["Cos(${1:X_real});"],"description": "Cos"},
-"Exp ": {"prefix": "Exp","body": ["Exp(${1:X_real});"],"description": "Exp"},
-"Hex$ ": {"prefix": "Hex$","body": ["Hex$(${1:i_int});"],"description": "Hex$"},
-"IntegerToString ": {"prefix": "IntegerToString","body": ["IntegerToString(${1:I}, ${2:W})"],"description": "IntegerToString"},
-"LCase ": {"prefix": "LCase","body": ["LCase(${1:S});"],"description": "LCase"},
-"Left$ ": {"prefix": "Left$","body": ["Left$(${1:S}, ${2:i_int});"],"description": "Left$"},
-"Len ": {"prefix": "Len","body": ["Len(${1:S});"],"description": "Len"},
-"Log ": {"prefix": "Log","body": ["Log(${1:X_real});"],"description": "Log"},
-"Log10 ": {"prefix": "Log10","body": ["Log10(${1:X_real});"],"description": "Log10"},
-"Mid$ ": {"prefix": "Mid$","body": ["Mid$(${1:S}, ${2:Start_int}, ${3:Length_int});"],"description": "Mid$"},
-"Oct$ ": {"prefix": "Oct$","body": ["Oct$(${1:i_int});"],"description": "Oct$"},
-"RealToString ": {"prefix": "RealToString","body": ["RealToString(${1:R}, ${2:W}, ${3:P})"],"description": "RealToString"},
-"Right$ ": {"prefix": "Right$","body": ["Right$(${1:S}, ${2:i_int});"],"description": "Right$"},
-"Sign ": {"prefix": "Sign","body": ["Sign(${1:X_real});"],"description": "Sign"},
-"Sin ": {"prefix": "Sin","body": ["Sin(${1:x_real});"],"description": "Sin"},
-"Space$ ": {"prefix": "Space$","body": ["Space$(${1:i_int});"],"description": "Space$"},
-"Sqrt ": {"prefix": "Sqrt","body": ["Sqrt(${1:X_real});"],"description": "Sqrt"},
-"StringSpaceCompress ": {"prefix": "StringSpaceCompress","body": ["StringSpaceCompress(${1:Region_string});"],"description": "StringSpaceCompress"},
-"StringToInteger ": {"prefix": "StringToInteger","body": ["StringToInteger(${1:S});"],"description": "StringToInteger"},
-"StringToReal ": {"prefix": "StringToReal","body": ["StringToReal(${1:S});"],"description": "StringToReal"},
-"Tan ": {"prefix": "Tan","body": ["Tan(${1:x_real});"],"description": "Tan"},
-"UCase$ ": {"prefix": "UCase$","body": ["UCase$(${1:S});"],"description": "UCase$"},
-"KeyPress ": {"prefix": "KeyPress","body": ["KeyPress(${1:key_Keys});"],"description": "KeyPress"},
-"LockKey ": {"prefix": "LockKey","body": ["LockKey(${1:key_Keys});"],"description": "LockKey"},
-"GetConsecNum ": {"prefix": "GetConsecNum","body": ["GetConsecNum;"],"description": "GetConsecNum"},
-"SetConsecNum ": {"prefix": "SetConsecNum","body": ["SetConsecNum(${1:Value_int});"],"description": "SetConsecNum"},
-"SetUID ": {"prefix": "SetUID","body": ["SetUID(${1:newid_string});"],"description": "SetUID"},
-"UnlockKey ": {"prefix": "UnlockKey","body": ["UnlockKey(${1:key_Keys});"],"description": "UnlockKey"},
-"ResetTimer ": {"prefix": "ResetTimer","body": ["ResetTimer(${1:T_int});"],"description": "ResetTimer"},
-"SetTimer ": {"prefix": "SetTimer","body": ["SetTimer(${1:T_int}, ${2:Value_int});"],"description": "SetTimer"},
-"SetTimerMode ": {"prefix": "SetTimerMode","body": ["SetTimerMode(${1:T_int}, ${2:Mode_timermode});"],"description": "SetTimerMode"},
-"SetTimerDigOut ": {"prefix": "SetTimerDigOut","body": ["SetTimerDigOut(${1:T_int}, ${2:S_int}, ${3:D_int});"],"description": "SetTimerDigOut"},
-"StartTimer ": {"prefix": "StartTimer","body": ["StartTimer(${1:T_int});"],"description": "StartTimer"},
-"StopTimer ": {"prefix": "StopTimer","body": ["StopTimer(${1:T_int});"],"description": "StopTimer"},
-"DisplayStatus ": {"prefix": "DisplayStatus","body": ["DisplayStatus(${1:Msg_string});"],"description": "DisplayStatus"},
-"PromptUser ": {"prefix": "PromptUser","body": ["PromptUser(${1:Msg_string});"],"description": "PromptUser"},
-"SetEntry ": {"prefix": "SetEntry","body": ["SetEntry(${1:S_string});"],"description": "SetEntry"},
-"FileOpen ": {"prefix": "FileOpen","body": ["FileOpen(${1:FileName_string}, ${2:Device}, ${3:FileAccessMode});"],"description": "FileOpen"},
-"USBFileOpen ": {"prefix": "USBFileOpen","body": ["USBFileOpen(${1:FileName_string}, ${2:FileAccessMode});"],"description": "USBFileOpen"},
-"FileExists ": {"prefix": "FileExists","body": ["FileExists(${1:FileName_string}, ${2:FileDevice});"],"description": "FileExists"},
-"USBFileExists ": {"prefix": "USBFileExists","body": ["USBFileExists(${1:FileName_string});"],"description": "USBFileExists"},
-"FileDelete ": {"prefix": "FileDelete","body": ["FileDelete(${1:FileName_string}, ${2:FileDevice});"],"description": "FileDelete"},
-"USBFileDelete ": {"prefix": "USBFileDelete","body": ["USBFileDelete(${1:FileName_string});"],"description": "USBFileDelete"},
-"SetFileTermin ": {"prefix": "SetFileTermin","body": ["SetFileTermin(${1:FileLineTermination});"],"description": "SetFileTermin"},
-"SysCodeToString ": {"prefix": "SysCodeToString","body": ["SysCodeToString(${1:Code_SysCode});"],"description": "SysCodeToString"},
-"ChartInit ": {"prefix": "ChartInit","body": ["ChartInit(${1:widget_num}, ${2:fillColor}, ${3:lineColor}, ${4:pointColor}, ${5:maxPoints});"],"description": "ChartInit"},
-"ChartPlot ": {"prefix": "ChartPlot","body": ["ChartPlot(${1:widget_num}, ${2:label}, ${3:value});"],"description": "ChartPlot"},
-"ChartSetAnimation ": {"prefix": "ChartSetAnimation","body": ["ChartSetAnimation(${1:widget_num});"],"description": "ChartSetAnimation"},
-"ChartRender ": {"prefix": "ChartRender","body": ["ChartRender(${1:widget_num});"],"description": "ChartRender"},
-"ChartInsertToExisting ": {"prefix": "ChartInsertToExisting","body": ["ChartInsertToExisting(${1:widget_num}, ${2:label}, ${3:value});"],"description": "ChartInsertToExisting"},
-"ChartInitStatic ": {"prefix": "ChartInitStatic", "body": ["ChartInitStatic(${1:int_Widgetno}, ${2:string_fillColor}, ${3:string_lineColor}, ${4:string_pointColor}, ${5:int_maxPoints});"], "description": "Creates a larger static chart"},
-"ChartClear ": {"prefix": "ChartClear", "body": ["ChartClear(${1int_WidgetNo});"], "description" : "Clears Static Chart to repopulate"},
-"ChartSetPointSize ": {"prefix": "ChartSetPointSize", "body": ["ChartSetPointSize(${1:int_Widgetno}, ${2:int_size(1-5)});"], "description": "Radius in pixels of chart point"},
-"ReadLn ": {"prefix": "ReadLn","body": ["ReadLn(${1:varD_string});"],"description": "ReadLn"},
-"BusyShow ": {"prefix": "BusyShow", "body":["BusyShow;"], "description": "Shows Busy Symbol On Screen"},
-"BusyHide ": {"prefix": "BusyHide", "body":["BusyHide;"], "description": "Removes Busy Symbol On Screen"},
-"SetupStartTimer": {"prefix": "SetupStartTimer", "body":["SetupStartTimer(${1:int_TimerNum}, ${2:int_Time}, ${3:timerType});"], "description": "RLWS iRite Template procedure to setup and start a timer"},
-"SubmitData": {"prefix": "SubmitData", "body":["SubmitData(${1:int_ScaleNum}, ${2:real_Wgt}, ${3:mode_GrossNet}, ${4:unitType_units}, ${5:real_Tare});"], "description": "Sets data for programmable scale"},
-"SubmitDSPData": {"prefix": "SubmitDSPData", "body":["SubmitData(${1:int_ScaleNum}, ${2:real_Wgt}, ${3:string_Units}, ${4:DecimalType_dp});"], "description": "Sets data for programmable scale"}
+
+  "ProgramDelay ": {
+    "prefix": "ProgramDelay", 
+    "body": ["ProgramDelay(${1:int_Time});"], 
+    "description": "Pauses the user program for the specified time. Delay time is entered in 0.01-second intervals (1/100 seconds, 100 = 1 second)."
+  },
+
+  "GetDigIn ": {
+    "prefix": "GetDigIn",
+    "body": ["GetDigIn(${1:int_Slot}, ${2:int_bit}, ${3:VAR int_value});"],
+    "description": "Sets 'value' to the value of the digital input assigned to 'slot', 'bit'. GetDigin sets 'value' to 0 if the input is on, to 1 if the input is off. Note that the values returned are the reverse of those used when setting an output with the SetDigout function. GetDigin can monitor any digital I/O point that is not configured as OFF or OUTPUT"
+  },
+
+  "GetDigOut ": {
+    "prefix": "GetDigOut",
+    "body": ["GetDigOut(${1:int_Slot}, ${2:int_bit}, ${3:VAR int_value});"],
+    "description": "Sets 'value' of the digital output assigned to 'slot', 'bit'. GetDigout sets 'value' to 0 if the output is off, to 1 if the output is on."
+  },
+
+  "SetDigOut ": {
+    "prefix": "SetDigOut",
+    "body": ["SetDigOut(${1:int_Slot}, ${2:int_bit}, ${3:int_value});"],
+    "description": "Sets value of the digital output assigned to 'slot', 'bit', to 'value'. Set 'value' to 1 to turn the specified output on; set 'value' to 0 to turn the output off."
+  },
+
+  "Abs ": {
+    "prefix": "Abs",
+    "body": ["Abs(${1:real_x});"],
+    "description": "Returns the absolute value of 'x'."
+  },
+
+  "Asc ": {
+    "prefix": "Asc",
+    "body": ["Asc(${1:string_S});"],
+    "description": "Returns the ASCII value of the first character of string 'S'. If 'S' is an empty string, the value returned is 0."
+  },
+
+  "Atan ": {
+    "prefix": "Atan",
+    "body": ["Atan(${1:real_x});"],
+    "description": "Returns a value between –pi/2 and pi/2, representing the arctangent of 'x' in radians."
+  },
+
+  "BitAnd ": {
+    "prefix": "BitAnd",
+    "body": ["BitAnd(${1:int_x}, ${2:int_y});"],
+    "description": "Returns the bit-wise AND result of 'X' and 'Y'"
+  },
+
+  "BitOr ": {
+    "prefix": "BitOr",
+    "body": ["BitOr(${1:int_x}, ${2:int_y});"],
+    "description": "Returns the bit-wise OR result of 'X' and 'Y'"
+  },
+
+  "BitNot ": {
+    "prefix": "BitNot",
+    "body": ["BitNot(${1:int_x}, ${2:int_y});"],
+    "description": "Returns the bit-wise NOT result of 'X' and 'Y'"
+  },
+
+  "BitXor ": {
+    "prefix": "BitXor",
+    "body": ["BitXor(${1:int_x}, ${2:int_y});"],
+    "description": "Returns the bit-wise exclusive OR (XOR) result of 'X' and 'Y'"
+  },
+  "Ceil ": {
+    "prefix": "Ceil",
+    "body": ["Ceil(${1:real_x});"],
+    "description": "Returns the smallest integer greater than or equal to x."
+  },
+
+  "Chr$ ": {
+    "prefix": "Chr$",
+    "body": ["Chr$(${1:int_x})"],
+    "description": "Returns a one-character string containing the ASCII character represented by 'x'."
+  },
+
+  "Cos ": {
+    "prefix": "Cos",
+    "body": ["Cos(${1:real_x});"],
+    "description": "Returns the cosine of x. x must be specified in radians."
+  },
+
+  "Exp ": {
+    "prefix": "Exp",
+    "body": ["Exp(${1:real_x});"],
+    "description": "Returns the value of e^x"
+  },
+
+  "Hex$ ": {
+    "prefix": "Hex$",
+    "body": ["Hex$(${1:int_i});"],
+    "description": "Returns an eight-character hexadecimal string equivalent to 'I'."
+  },
+
+  "IntegerToString ": {
+    "prefix": "IntegerToString",
+    "body": ["IntegerToString(${1:int_I}, ${2:int_minLength})"],
+    "description": "Returns a string representation of the integer 'I' with a minimum length of 'minLength'. If 'minLength' is less than zero, zero is used as the minimum length. If minLength is greater than 100, 100 is used as the minimum length."
+  },
+
+  "LCase$ ": {
+    "prefix": "LCase",
+    "body": ["LCase(${1:string_S});"],
+    "description": "Returns the string 'S' with all upper-case letters converted to lower case."
+  },
+
+  "Left$ ": {
+    "prefix": "Left$",
+    "body": ["Left$(${1:string_S}, ${2:int_i});"],
+    "description": "Returns a string containing the leftmost 'left' characters of string 'S'. If 'left' is greater than the length of 'S', the function returns a copy of 'S'."
+  },
+
+  "Len ": {
+    "prefix": "Len",
+    "body": ["Len(${1:string_S});"],
+    "description": "Returns the length (number of characters) of string 'S'."
+  },
+
+  "Log ": {
+    "prefix": "Log",
+    "body": ["Log(${1:real_x});"]
+    ,"description": "Returns the value of log e(x)."
+  },
+
+  "Log10 ": {
+    "prefix": "Log10",
+    "body": ["Log10(${1:real_x});"],
+    "description": "Returns the value of log 10(x)."
+  },
+
+  "Mid$ ": {
+    "prefix": "Mid$",
+    "body": ["Mid$(${1:string_S}, ${2:int_Start}, ${3:int_Length});"]
+    ,"description": "Returns a number of characters (specified by 'length') from string 's', beginning with the character specified by 'start'. If 'start' is greater than the string length, the result is an empty string. If 'start' + 'length' is greater than the length of S, the returned value contains the characters from 'start' through the end of 'S'."
+  },
+
+  "Oct$ ": {
+    "prefix": "Oct$",
+    "body": ["Oct$(${1:int_I});"],
+    "description": "Returns an 11-character octal string equivalent to 'I'."
+  },
+
+  "RealToString ": {
+    "prefix": "RealToString",
+    "body": ["RealToString(${1:real_R}, ${2:int_length}, ${3:int_decimal})"],
+    "description": "Returns a string representation of the real number 'R' with a minimum length of 'length', with 'decimal' digits to the right of the decimal point. If 'length' is less than zero, zero is used as the minimum length; if 'length' is greater than 100, 100 is used as the minimum length. If 'decimal' is less than zero, zero is used as the precision; if 'decimal' is greater than 20, 20 is used."
+  },
+
+  "Right$ ": {
+    "prefix": "Right$",
+    "body": ["Right$(${1:string_S}, ${2:int_length});"],
+    "description": "Returns a string containing the rightmost 'length' characters of string 'S'. If 'length' is greater than the length of 'S', the function returns a copy of 'S'."
+  },
+
+  "Sign ": {
+    "prefix": "Sign",
+    "body": ["Sign(${1:real_x});"],
+    "description": "Returns the sign of the numeric operand. If x < 0, the function returns a value of –1; otherwise, the value returned is 1."
+  },
+
+  "Sin ": {
+    "prefix": "Sin",
+    "body": ["Sin(${1:real_x});"],
+    "description": "Returns the sine of x. x must be specified in radians."
+  },
+
+  "Space$ ": {
+    "prefix": "Space$",
+    "body": ["Space$(${1:int_num});"],
+    "description": "Returns a string containing 'num' spaces"
+  },
+
+  "Sqrt ": {
+    "prefix": "Sqrt",
+    "body": ["Sqrt(${1:real_x});"],
+    "description": "Returns the square root of x."
+  },
+
+  "StringToInteger ": {
+    "prefix": "StringToInteger",
+    "body": ["StringToInteger(${1:string_S});"],
+    "description": "Returns the integer equivalent of the numeric string S. If S is not a valid string, function returns the value 0."
+  },
+
+  "StringToReal ": {
+    "prefix": "StringToReal",
+    "body": ["StringToReal(${1:string_S});"],
+    "description": "Returns the real number equivalent of the numeric string S. If S is not a valid string, the function returns the value 0.0."
+  },
+
+  "Tan ": {
+    "prefix": "Tan",
+    "body": ["Tan(${1:real_x});"],
+    "description": "Tan"
+  },
+
+  "UCase$ ": {
+    "prefix": "UCase$",
+    "body": ["UCase$(${1:string_S});"],
+    "description": "Returns the string S with all lower-case letters converted to upper case"
+  },
+
+  "KeyPress ": {
+    "prefix": "KeyPress",
+    "body": ["KeyPress(${1:key_Keys});"],
+    "description": "Provides intrinsic functionality for a key.  Mimicks actually physically pressing the referenced key"
+  },
+
+  "LockKey ": {
+    "prefix": "LockKey",
+    "body": ["LockKey(${1:keys_Key});"],
+    "description": "Disables the specified front panel key."
+  },
+
+  "GetConsecNum ": {
+    "prefix": "GetConsecNum",
+    "body": ["GetConsecNum;"],
+    "description": "Returns the value of the consecutive number counter."
+  },
+
+  "SetConsecNum ": {
+    "prefix": "SetConsecNum",
+    "body": ["SetConsecNum(${1:int_V});"],
+    "description": "Sets the consecutive number counter to the value of V."
+  },
+
+  "SetUID ": {
+    "prefix": "SetUID",
+    "body": ["SetUID(${1:string_newid});"],
+    "description": "Sets the unit identifier"
+  },
+
+  "UnlockKey ": {
+    "prefix": "UnlockKey",
+    "body": ["UnlockKey(${1:keys_Key});"],
+    "description": "Enables the specified front panel key."
+  },
+
+  "ResetTimer ": {
+    "prefix": "ResetTimer",
+    "body": ["ResetTimer(${1:int_T});"],
+    "description": "Resets the value of timer T (1–32) by stopping the timer, setting the timer mode to TimerOneShot, and setting the timer time-out to 0."
+  },
+
+  "SetTimer ": {
+    "prefix": "SetTimer",
+    "body": ["SetTimer(${1:int_T}, ${2:int_Value});"],
+    "description": "Sets the time-out value of timer T (1–32). Timer values are specified in 0.01-second intervals (1= 10 ms, 100 = 1 second). For one-shot timers, the SetTimer function must be called again to restart the timer once it has expired."
+  },
+
+  "SetTimerMode ": {
+    "prefix": "SetTimerMode",
+    "body": ["SetTimerMode(${1:int_T}, ${2:Mode_timermode});"],
+    "description": "Sets the mode value, 'timermode', of timer T (1–32). This function, normally included in a program startup handler, only needs to be called once for each timer unless the timer mode is changed."
+  },
+
+  "SetTimerDigOut ": {
+    "prefix": "SetTimerDigOut",
+    "body": ["SetTimerDigOut(${1:int_T}, ${2:int_slot}, ${3:int_bit});"],
+    "description": "Used to provide precise control of state changes for timers using TimerDigoutOff or TimerDigoutOn modes. The state of the specified digital output ('slot', 'bit') is changed when timer T (1–32) expires"
+  },
+
+  "StartTimer ": {
+    "prefix": "StartTimer",
+    "body": ["StartTimer(${1:int_T});"],
+    "description": "Starts timer T (1–32). For one-shot timers, this function must be called each time the timer is used. Continuous timers are started only once; they do not require another call to StartTimer unless stopped by a call to the StopTimer function. If a timer has been set with a time-out value of 0, StartTimer will not start the timer but will return SysOk"
+  },
+
+  "StopTimer ": {
+    "prefix": "StopTimer",
+    "body": ["StopTimer(${1:int_T});"],
+    "description": "Stops timer T (1–32)."
+  },
+
+  "DisplayStatus ": {
+    "prefix": "DisplayStatus",
+    "body": ["DisplayStatus(${1:string_Msg});"],
+    "description": "Displays the string 'msg' in the front panel status message area. The length of string 'msg' should not exceed 32 characters."
+  },
+
+  "PromptUser ": {
+    "prefix": "PromptUser",
+    "body": ["PromptUser(${1:string_msg});"],
+    "description": "Opens the alpha entry box and places the string 'msg' in the user prompt area."
+  },
+
+  "PromptPassword ": {
+    "prefix": "PromptPassword;",
+    "body": [""],
+    "description": "Brings up an alphanumeric prompt in which the text input is masked.  Returns SysCode"
+  },
+
+  "PromptNumeric ": {
+    "prefix": "PromptNumeric;",
+    "body": ["Brings up a numeric only prompt.  Returns SysCode."]
+  },
+
+  "SetEntry ": {
+    "prefix": "SetEntry",
+    "body": ["SetEntry(${1:string_S});"],
+    "description": "Sets the user entry for a programmed prompt. This procedure can be used to provide a default value for entry box text when prompting the operator for input. Up to 1000 characters can be specified."
+  },
+
+  "FileOpen ": {
+    "prefix": "FileOpen",
+    "body": ["FileOpen(${1:string_F}, ${2:FileDevice_D}, ${3:FileAccessMode_M});"],
+    "description": "Opens text file F on device D with access mode M. This text file will be used for all subsequent USBWrite and USBWriteLn operations"
+  },
+
+  "USBFileOpen ": {
+    "prefix": "USBFileOpen",
+    "body": ["USBFileOpen(${1:string_F}, ${2:FileAccessMode_M});"],
+    "description": "Read a file 'F' from the flash drive. Opening a file as Read positions the internal pointer at the start of the file. Opening a file as Create or Append positions the internal pointer at the end of the file. Any attempt to read a file opened as Create or Append will return SysEndOfFile."
+  },
+
+  "USBFileClose ": {
+    "prefix": "USBFileClose",
+    "body": ["USBFileClose;"],
+    "description": "Used to close a currently opened file (see USBFileOpen). A file must be closed before device removal or the file contents may be corrupted."
+  },
+
+  "FileExists ": {
+    "prefix": "FileExists",
+    "body": ["FileExists(${1:string_F}, ${2:FileDevice_D});"],
+    "description": "Returns status indicating whether file F exists on device D."
+  },
+
+  "USBFileExists ": {
+    "prefix": "USBFileExists",
+    "body": ["USBFileExists(${1:string_fileName});"],
+    "description": "Checks to see if a file exists on the USB drive."
+  },
+
+  "FileDelete ": {
+    "prefix": "FileDelete",
+    "body": ["FileDelete(${1:string_F}, ${2:FileDevice_D});"],
+    "description": "Deletes file F from device D."
+  },
+
+  "USBFileDelete ": {
+    "prefix": "USBFileDelete",
+    "body": ["USBFileDelete(${1:string_F});"],
+    "description": "Deletes a file saved to the USB drive. To overwrite an existing file, the user program should first delete the file, then reopen it with Create access."
+  },
+
+  "SetFileTermin ": {
+    "prefix": "SetFileTermin",
+    "body": ["SetFileTermin(${1:LineTermination_termin});"],
+    "description": "This determines what is appended at the end of each line.(FileCRLF, FileCR, FileLF)"
+  },
+
+  "SysCodeToString ": {
+    "prefix": "SysCodeToString",
+    "body": ["SysCodeToString(${1:SysCode_sc});"],
+    "description": "Returns a string representation of the SysCode 'sc'"
+  },
+
+  "ChartInit ": {
+    "prefix": "ChartInit",
+    "body": ["ChartInit(${1:int_widgetNum}, ${2:string_fillColor}, ${3:string_lineColor}, ${4:string_pointColor}, ${5:int_maxPoints});"],
+    "description": "Call this API to initialize the chart and set color values."
+  },
+
+  "ChartPlot ": {
+    "prefix": "ChartPlot",
+    "body": ["ChartPlot(${1:widget_num}, ${2:label}, ${3:value});"],
+    "description": "Plots an individual point on the chart"
+  },
+
+  "ChartSetAnimation ": {
+    "prefix": "ChartSetAnimation",
+    "body": ["ChartSetAnimation(${1:int_widgetNum}, ${2:BooleanType_enabled};"],
+    "description": "Turns animated rendering on or off"
+  },
+
+  "ChartRender ": {
+    "prefix": "ChartRender",
+    "body": ["ChartRender(${1:int_widgetNum});"],
+    "description": "Draws the previously initialized and plotted graph to the display"
+  },
+
+  "ChartInsertToExisting ": {
+    "prefix": "ChartInsertToExisting",
+    "body": ["ChartInsertToExisting(${1:int_widgetNum}, ${2:string_label}, ${3:real_value});"],
+    "description": "insert a new data point into a previously rendered chart. If the new point exceeds the max number of points set in ChartInit, the oldest or leftmost point on the chart is removed while the new point is added."
+  },
+
+  "ChartInitStatic ": {
+    "prefix": "ChartInitStatic", 
+    "body": ["ChartInitStatic(${1:int_Widgetno}, ${2:string_fillColor}, ${3:string_lineColor}, ${4:string_pointColor}, ${5:int_maxPoints});"], 
+    "description": "Creates a larger static chart"
+  },
+
+  "ChartClear ": {
+    "prefix": "ChartClear", 
+    "body": ["ChartClear(${1:int_WidgetNo});"], 
+    "description" : "Clears Static Chart to repopulate"
+  },
+
+  "ChartSetPointSize ": {
+    "prefix": "ChartSetPointSize", 
+    "body": ["ChartSetPointSize(${1:int_Widgetno}, ${2:int_size(1-5)});"], 
+    "description": "Radius in pixels of chart point"
+  },
+
+  "BusyShow ": {
+    "prefix": "BusyShow", 
+    "body":["BusyShow;"], 
+    "description": "Shows Busy Symbol On Screen"
+  },
+
+  "BusyHide ": {
+    "prefix": "BusyHide", 
+    "body":["BusyHide;"], 
+    "description": "Removes Busy Symbol On Screen"
+  },
+
+  "SubmitData": {
+    "prefix": "SubmitData", 
+    "body":["SubmitData(${1:int_ScaleNum}, ${2:real_Wgt}, ${3:mode_GrossNet}, ${4:unitType_units}, ${5:real_Tare});"], 
+    "description": "Sets data for programmable scale"
+  },
+
+  "SubmitDSPData": {
+    "prefix": "SubmitDSPData", 
+    "body":["SubmitData(${1:int_ScaleNum}, ${2:real_Wgt}, ${3:string_Units}, ${4:DecimalType_dp});"], 
+    "description": "Sets data for programmable scale"
+  },
+
+  "StartFTPServer": {
+    "prefix": "StartFTPServer",
+    "body":["StartFTPServer;"],
+    "description": "Starts FTP Server, allowing external access to the files stored there. Returns SysCode"
+  },
+
+  "StopFTPServer": {
+    "prefix": "StopFTPServer",
+    "body":["StopFTPServer;"],
+    "description": "Stops FTP Server, removing the ability to externally access the FTP files"
+  },
+
+  "GetMacAddress": {
+    "prefix": "GetMacAddress",
+    "body":["GetMacAddress"],
+    "description": "returns a string value of the read-only on-board MAC address"
+  }, 
+
+  "SetAllDigoutOff ": {
+    "prefix": "SetAllDigoutOff",
+    "body": ["SetAllDigoutOff(${1:int_slotNum});"],
+    "description": "Sets all Digout on 'slotNum' to off.  Returns SysCode"
+  }
+
 }

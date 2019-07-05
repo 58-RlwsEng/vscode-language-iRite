@@ -72,7 +72,7 @@ export function activate(context: vscode.ExtensionContext) {
         if (success) {
           iRiteChannel.appendLine("All Files Saved");
 
-          var openTextDoc;
+          var openTextDoc: vscode.TextDocument;
 
           // async function save () {
           //   try {

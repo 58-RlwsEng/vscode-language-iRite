@@ -1,0 +1,25 @@
+{
+  "IsValid": {
+    "prefix": "IsValid",
+    "body": [
+      "if isValid(${1:string_Input}, ${2:string_ValidFor}, ${3:int_Length}) = true then",
+      "\t$4",
+      "end if;"
+    ],
+    "description": "RLWS iRite template. Checks if entered value is valid for (S)tring, (I)nteger, (R)eal or (P)ercentage"
+    },
+
+  "PromptForEntry": {
+    "prefix": "PromptForEntry",
+    "body": [
+      "PromptForEntry(${1:string_Prompt}, ${2:integer_EntryMode}, ${3:string_Default}, ${4:bit_prompt});"
+    ],
+    "description": "RLWS iRite template.  Prompts for user entry with passed in parameters"
+  },
+
+  "SetupStartTimer": {
+    "prefix": "SetupStartTimer", 
+    "body":["SetupStartTimer(${1:int_TimerNum}, ${2:int_Time}, ${3:timerType});"], 
+    "description": "RLWS iRite Template procedure to setup and start a timer"
+  },
+}
