@@ -1,9 +1,9 @@
 ChangeLog
 =========
+#### 2.6.0
 
-#### 2.5.3
-
--   Added missing or incorrect snippet and autocomplete info.
+- Completely revamped the snippets for continuity and completeness.
+- Added missing or incorrect snippet and autocomplete info.
 
 #### 2.5.2
 

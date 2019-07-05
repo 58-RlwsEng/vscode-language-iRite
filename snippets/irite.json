@@ -1044,13 +1044,14 @@
 
   "PromptPassword ": {
     "prefix": "PromptPassword;",
-    "body": [""],
+    "body": ["PromptPassword(${1:string_msg});"],
     "description": "Brings up an alphanumeric prompt in which the text input is masked.  Returns SysCode"
   },
 
   "PromptNumeric ": {
     "prefix": "PromptNumeric;",
-    "body": ["Brings up a numeric only prompt.  Returns SysCode."]
+    "body": ["PromptNumeric(${1:string_msg});"],
+    "description": "Brings up a numeric only prompt.  Returns SysCode."
   },
 
   "SetEntry ": {
@@ -1197,7 +1198,7 @@
     "description": "Stops FTP Server, removing the ability to externally access the FTP files"
   },
 
-  "GetMacAddress": {
+  "GetMacAddress ": {
     "prefix": "GetMacAddress",
     "body":["GetMacAddress"],
     "description": "returns a string value of the read-only on-board MAC address"

@@ -155,12 +155,7 @@
 			<key>name</key>
 			<string>keyword.operator.irite</string>
 		</dict>
-		<dict>
- 			<key>match</key>
- 			<string>\b(?i:(begin|end))\b</string>
- 			<key>name</key>
- 			<string>keyword.method.beginend.irite</string>
- 		</dict>
+		
 		<dict>
 			<key>match</key>
 			<string>\:\=</string>
@@ -184,17 +179,18 @@
 			<string>\#\b(?i:(include))</string>
 			<key>name</key>
 			<string>keyword.preprocessor.irite</string>
-		</dict>
+		</dict>		
 		<dict>
 			<key>match</key>
-			<string>\b(?i:(function|procedure|handler))\b\s+(\w+(\.\w+)?)(\(.*?\))?;\s*(?=(?i:attribute|forward|external))</string>
+			<string>\b(?i:(function|procedure|handler|end))\b\s+(\w+(\.\w+)?)(\(.*?\))?;\s*(?=(?i:attribute|forward|external))</string>
+			
 			<key>name</key>
 			<string>entity.function.prototype.irite</string>
 			<key>name</key>
 			<string>entity.name.function.prototype.irite</string>
 			<key>name</key>
 			<string>meta.function.prototype.irite</string>
-		</dict>
+		</dict>		
 		<dict>
 			<key>captures</key>
 			<dict>
@@ -209,10 +205,10 @@
 					<string>entity.name.class.irite</string>
 				</dict>
 			</dict>
+			
 			<key>match</key>
 			<string>\b(?i:(function|procedure|program|handler|end))\b\s+(\w+(\.\w+)?)</string>
 			<key>name</key>
-
 			<string>keyword.method.irite</string>
 
 		</dict>
@@ -291,6 +287,12 @@
 					<string>constant.character.escape.apostrophe.irite</string>
 				</dict>
 			</array>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b(?i:(begin|end))\b</string>
+			<key>name</key>
+			<string>keyword.method.beginend.irite</string>
 		</dict>
 	</array>
 	<key>scopeName</key>
