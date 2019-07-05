@@ -1,5 +1,9 @@
 ChangeLog
 =========
+#### 2.7.1
+
+- Security patches
+
 #### 2.7.0
 
 - Completely revamped the snippets for continuity and completeness.
