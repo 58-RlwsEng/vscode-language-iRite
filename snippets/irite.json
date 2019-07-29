@@ -1054,6 +1054,12 @@
     "description": "Brings up a numeric only prompt.  Returns SysCode."
   },
 
+  "UpdateEntry ": {
+    "prefix": "UpdateEntry",
+    "body": ["UpdateEntry(${1:string_userEntry});"],
+    "description": "If using an external keyboard, this API is required to update data typed in on the keyboard.  Works in conjunction with PortCharReceived or equivalent handler."
+  },
+
   "SetEntry ": {
     "prefix": "SetEntry",
     "body": ["SetEntry(${1:string_S});"],
@@ -1076,6 +1082,18 @@
     "prefix": "USBFileClose",
     "body": ["USBFileClose;"],
     "description": "Used to close a currently opened file (see USBFileOpen). A file must be closed before device removal or the file contents may be corrupted."
+  },
+
+  "FileWrite ": {
+    "prefix": "FileWrite",
+    "body": ["FileWrite(${1:string_data});"],
+    "description": "Writes data to currently open file (USB, SDCard, FTP);"
+  },
+
+  "FileWriteLn ": {
+    "prefix": "FileWriteLn",
+    "body": ["FileWrite(${1:string_data});"],
+    "description": "Writes data to currently open file (USB, SDCard, FTP).  Appends CR/LF at the end"
   },
 
   "FileExists ": {
@@ -1202,12 +1220,17 @@
     "prefix": "GetMacAddress",
     "body":["GetMacAddress"],
     "description": "returns a string value of the read-only on-board MAC address"
-  }, 
+  },
 
   "SetAllDigoutOff ": {
     "prefix": "SetAllDigoutOff",
     "body": ["SetAllDigoutOff(${1:int_slotNum});"],
     "description": "Sets all Digout on 'slotNum' to off.  Returns SysCode"
-  }
+  },
 
+  "CaptureImageFromVivotekIP7361 ": {
+    "prefix": "CaptureImageFromVivotekIP7361",
+    "body": ["CaptureIMageFromVivotekIP7361(${1:string_source}, ${2:string_filePath})"],
+    "description": "Captures a photo from the Vivotex IP7361 camera.  Automatically appends a .jpg to the filename.  Image is stored to the microSD card in the sdimages folder.  Only works with the specific camera listed in the name of the API."
+  }
 }

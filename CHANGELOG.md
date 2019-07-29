@@ -1,5 +1,9 @@
 ChangeLog
 =========
+#### 2.8.0
+
+- Added new snippets and highlighting for the new APIs
+
 #### 2.7.1
 
 - Security patches
