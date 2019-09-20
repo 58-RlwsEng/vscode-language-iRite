@@ -1,5 +1,9 @@
 ChangeLog
 =========
+#### 2.9.0
+
+- Missing highlighting from recent changes
+
 #### 2.8.0
 
 - Added new snippets and highlighting for the new APIs
