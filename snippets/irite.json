@@ -1227,10 +1227,18 @@
     "body": ["SetAllDigoutOff(${1:int_slotNum});"],
     "description": "Sets all Digout on 'slotNum' to off.  Returns SysCode"
   },
+  
+  "SendMail ": {
+      "prefix": "SendMail",
+      "body": [
+         "SendMail(${1:string_toAddress}, ${2:string_fromAddress}, ${3:string_subject}, ${4:string_body});"
+      ],
+      "description": "Sends an email through the server and account configured on the 1280."
+   },
 
   "CaptureImageFromVivotekIP7361 ": {
     "prefix": "CaptureImageFromVivotekIP7361",
     "body": ["CaptureIMageFromVivotekIP7361(${1:string_source}, ${2:string_filePath})"],
     "description": "Captures a photo from the Vivotex IP7361 camera.  Automatically appends a .jpg to the filename.  Image is stored to the microSD card in the sdimages folder.  Only works with the specific camera listed in the name of the API."
-  }
+  }  
 }
