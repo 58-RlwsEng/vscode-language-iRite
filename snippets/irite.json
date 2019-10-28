@@ -1228,12 +1228,28 @@
     "description": "Sets all Digout on 'slotNum' to off.  Returns SysCode"
   },
   
-  "SendMail ": {
-      "prefix": "SendMail",
+  "SendEmail ": {
+      "prefix": "SendEmail",
       "body": [
-         "SendMail(${1:string_toAddress}, ${2:string_fromAddress}, ${3:string_subject}, ${4:string_body});"
+         "SendEmail(${1:string_toAddress}, ${2:string_fromAddress}, ${3:string_subject}, ${4:string_body});"
       ],
       "description": "Sends an email through the server and account configured on the 1280."
+   },
+
+   "SendEmailFormat ": {
+      "prefix": "SendEmailFormat",
+      "body": [
+         "SendEmail(${1:string_toAddress}, ${2:string_fromAddress}, ${3:string_subject}, ${4:PrintFormat_fmt});"
+      ],
+      "description": "Sends an email through the server and account configured on the 1280 using delineated print format as the body."
+   },
+
+   "SendEmailAlert ": {
+      "prefix": "SendEmail",
+      "body": [
+         "SendEmail(${1:string_toAddress}, ${2:string_fromAddress}, ${3:string_subject}, ${4:string_body});"
+      ],
+      "description": "Sends an email through the server and account configured on the 1280.  Uses default to, from and subject configured in the 1280.  Sends Alert Format"
    },
 
   "CaptureImageFromVivotekIP7361 ": {
