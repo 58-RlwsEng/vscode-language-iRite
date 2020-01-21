@@ -1,5 +1,10 @@
 ChangeLog
 =========
+
+#### 2.10.1
+
+- Added new API for getting the status of all DIOs on a given slot with one bitmasked integer.
+
 #### 2.9.0
 
 - Missing highlighting from recent changes
