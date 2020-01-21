@@ -773,6 +773,12 @@
     "description": "Sets 'value' of the digital output assigned to 'slot', 'bit'. GetDigout sets 'value' to 0 if the output is off, to 1 if the output is on."
   },
 
+  "GetDigAll ": {
+   "prefix": "GetDigAll",
+   "body": ["GetDigAll(${1:int_Slot}, ${2:VAR int_value});"],
+   "description": "Sets 'value' to the value of the bitmasked value of all DIO bits in 'slot'."
+},
+
   "SetDigOut ": {
     "prefix": "SetDigOut",
     "body": ["SetDigOut(${1:int_Slot}, ${2:int_bit}, ${3:int_value});"],
@@ -1247,7 +1253,7 @@
    "SendEmailAlert ": {
       "prefix": "SendEmail",
       "body": [
-         "SendEmail(${1:string_toAddress}, ${2:string_fromAddress}, ${3:string_subject}, ${4:string_body});"
+         "SendEmail;"
       ],
       "description": "Sends an email through the server and account configured on the 1280.  Uses default to, from and subject configured in the 1280.  Sends Alert Format"
    },
