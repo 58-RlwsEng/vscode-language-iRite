@@ -785,6 +785,38 @@
     "description": "Sets value of the digital output assigned to 'slot', 'bit', to 'value'. Set 'value' to 1 to turn the specified output on; set 'value' to 0 to turn the output off."
   },
 
+  "GetFBStatus ": {
+      "prefix": "GetFBStatus",
+      "body": [
+         "GetFBStatus(${1:int_FieldBusNo}, ${2:int_ScaleNo}, ${3:VAR int_Status}"
+      ],
+      "description": "Returns the status word for the specified fieldbus. See the appropriate fieldbus addendum for a description of the status word format."
+   },
+
+   "GetImage ": {
+      "prefix": "GetImage", 
+      "body": ["GetImage(${1:int_FieldBusNo}, ${2:VAR BusImage_Data})"],
+      "description": "For integer data, GetImage returns the content of the BusImage for the specified fieldbus."
+   },
+
+   "GetImageReal ": {
+      "prefix": "GetImageReal", 
+      "body": ["GetImageReal(${1:int_FieldBusNo}, ${2:VAR BusImageReal_Data})"],
+      "description": "For real data, GetImageReal returns the content of the BusImage for the specified fieldbus."
+   },
+
+   "SetImage ": {
+      "prefix": "SetImage", 
+      "body": ["SetImage(${1:int_FieldBusNo}, ${2:BusImage_Data})"],
+      "description": "For integer data, SetImage sets the content of the BusImage for the specified fieldbus."
+   },
+
+   "SetImageReal ": {
+      "prefix": "SetImageReal", 
+      "body": ["SetImageReal(${1:int_FieldBusNo}, ${2:BusImageReal_Data})"],
+      "description": "For real data, SetImageReal sets the content of the BusImage for the specified fieldbus."
+   },
+   
   "Abs ": {
     "prefix": "Abs",
     "body": ["Abs(${1:real_x});"],
@@ -1206,8 +1238,8 @@
 
   "SubmitDSPData": {
     "prefix": "SubmitDSPData", 
-    "body":["SubmitData(${1:int_ScaleNum}, ${2:real_Wgt}, ${3:string_Units}, ${4:DecimalType_dp});"], 
-    "description": "Sets data for programmable scale"
+    "body":["SubmitDSPData(${1:int_ScaleNum}, ${2:real_Wgt}, ${3:string_Units}, ${4:DecimalType_dp});"], 
+    "description": "Sets data for programmable scale, like SubmitData with fewer parameters"
   },
 
   "StartFTPServer": {

@@ -1,6 +1,9 @@
 ChangeLog
 =========
 
+#### 2.11.0
+- SubmitDSPData snippet actually filled in SubmitData code, fixed.  Missing snippet for GetFBStatus.  
+
 #### 2.10.1
 
 - Added new API for getting the status of all DIOs on a given slot with one bitmasked integer.
