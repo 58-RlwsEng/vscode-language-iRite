@@ -145,6 +145,8 @@
 		"expand-brackets": ">=4.0.0",
 		"extglob": ">=3.0.0",
 		"findup-sync": ">=3.0.0",
+		"mkdirp": "^1.0.4",
+		"mocha": "^7.1.1",
 		"opener": ">=1.5.1",
 		"promise": ">=8.0.2",
 		"thenable": "^1.0.0"
@@ -154,7 +156,7 @@
 		"snapdragon": ">=0.12.0",
 		"ts-loader": ">=6.0.4",
 		"typescript": ">=3.1.3",
-		"vscode": ">=1.1.35",
+		"vscode": "^1.1.36",
 		"webpack": ">=4.35.2",
 		"webpack-cli": ">=3.3.5"
 	},
