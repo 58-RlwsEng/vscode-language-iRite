@@ -1,6 +1,9 @@
 ChangeLog
 =========
 
+#### 2.12.0
+- Security updates.  882D Snippets and highlighting added.  
+
 #### 2.11.0
 - SubmitDSPData snippet actually filled in SubmitData code, fixed.  Missing snippet for GetFBStatus.  
 
