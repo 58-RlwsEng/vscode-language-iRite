@@ -1294,5 +1294,81 @@
     "prefix": "CaptureImageFromVivotekIP7361",
     "body": ["CaptureIMageFromVivotekIP7361(${1:string_source}, ${2:string_filePath})"],
     "description": "Captures a photo from the Vivotex IP7361 camera.  Automatically appends a .jpg to the filename.  Image is stored to the microSD card in the sdimages folder.  Only works with the specific camera listed in the name of the API."
-  }  
+  },
+
+  "GetMaxCapacity": {
+     "prefix": "GetMaxCapacity",
+     "body": ["GetMaxCapacity(${1:int_scale}, ${2:VAR real_maxCap});"],
+     "description": "Sets 'maxCap' to the configured maximum capacity for 'scale'.  Returns Syscode"
+  },
+
+  "GetTotal": {
+     "prefix": "GetTotal",
+     "body": ["GetTotal(${1:int_scale}, ${2:int_totalizer}, ${3:VAR real_total});"],
+     "description": "Sets 'total' to current value for 'totalizer' on 'scale'"
+  }, 
+
+  "ClearTotal": {
+   "prefix": "ClearTotal",
+   "body": [
+      "ClearTotal(${1:int_scale}, ${2:int_totalizer});"
+   ],
+   "description": "Clears 'totalizer' on 'scale'"
+   },
+
+   "GetLoad": {
+      "prefix": "GetLoad",
+      "body": [
+         "GetLoad(${1:int_scale}, ${2:VAR real_load});"
+      ],
+      "description": "Sets 'load' to current belt scale load on 'scale'"
+   },
+
+   "GetSpeed": {
+      "prefix": "GetSpeed",
+      "body": [
+         "GetSpeed(${1:int_scale}, ${2:VAR real_speed});"
+      ],
+      "description": "Sets 'speed' to current belt speed value on 'scale'"
+   },
+
+   "GetRate": {
+      "prefix": "GetRate",
+      "body": [
+         "GetRate(${1:int_scale}, ${2:VAR real_rate});"
+      ],
+      "description": "Sets 'rate' to current belt rate value value for 'scale'"
+   },
+
+   "GetTotalizerUnitsString": {
+      "prefix": "GetTotalizerUnitsString",
+      "body": [
+         "GetTotalizerUnitsString(${1:int_scale}, ${2:VAR string_units});"
+      ],
+      "description": "Sets 'units' to the text string representing the configured totalizer resolution units for 'scale'"
+   },
+
+   "GetLoadUnitsString": {
+      "prefix": "GetLoadUnitsString",
+      "body": [
+         "GetLoadUnitsString(${1:int_scale}, ${2:VAR string_units});"
+      ],
+      "description": "Sets 'units' to the text string representing the configured load units for 'scale'"
+   },
+
+   "GetSpeedUnitsString": {
+      "prefix": "GetSpeedUnitsString",
+      "body": [
+         "GetSpeedUnitsString(${1:int_scale}, ${2:VAR string_units});"
+      ],
+      "description": "Sets 'units' to the text string representing the configured belt speed units for 'scale'"
+   },
+
+   "GetRateUnitsString": {
+      "prefix": "GetRateUnitsString",
+      "body": [
+         "GetRateUnitsString(${1:int_scale}, ${2:VAR string_units});"
+      ],
+      "description": "Sets 'units' to the text string representing the configured rate resolution units for 'scale'"
+   }
 }
