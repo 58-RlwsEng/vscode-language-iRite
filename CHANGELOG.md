@@ -1,6 +1,9 @@
 ChangeLog
 =========
 
+#### 2.12.1
+- Security updates. 
+
 #### 2.12.0
 - Security updates.  882D Snippets and highlighting added.  
 
