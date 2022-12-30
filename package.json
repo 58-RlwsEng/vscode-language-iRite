@@ -146,7 +146,7 @@
 		"extglob": ">=3.0.0",
 		"findup-sync": "^4.0.0",
 		"mkdirp": "^1.0.4",
-		"mocha": "^7.2.0",
+		"mocha": "^10.2.0",
 		"opener": "^1.5.2",
 		"promise": "^8.1.0",
 		"thenable": "^1.0.0"
